@@ -304,6 +304,20 @@ function nextPracticeQuestion() {
   }
 }
 
+function cancelPractice() {
+  if (!state.practice) {
+    showPracticeScreen("setup");
+    return;
+  }
+  const confirmed = confirm(
+    "Bạn muốn thoát bài test? Kết quả của phiên đang làm sẽ không được lưu.",
+  );
+  if (!confirmed) return;
+  clearInterval(state.timerId);
+  state.practice = null;
+  showPracticeScreen("setup");
+}
+
 async function finishPractice() {
   const results = state.practice.results;
   const correct = results.filter((result) => result.isCorrect).length;
@@ -548,6 +562,7 @@ function bindEvents() {
   $("#startPractice").addEventListener("click", () => startPractice(false));
   $("#startWrongPractice").addEventListener("click", () => startPractice(true));
   $("#nextQuestionButton").addEventListener("click", nextPracticeQuestion);
+  $("#cancelPractice").addEventListener("click", cancelPractice);
   $("#retryPractice").addEventListener("click", () => startPractice(false));
   $("#backToSetup").addEventListener("click", () => showPracticeScreen("setup"));
   $("#deleteExamButton").addEventListener("click", removeCurrentExam);
