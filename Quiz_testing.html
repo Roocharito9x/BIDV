@@ -20,21 +20,34 @@
     <div id="toastRegion" class="toast-region" aria-live="polite"></div>
 
     <section id="loginScreen" class="screen login-screen" aria-labelledby="loginTitle">
-      <div class="login-visual" aria-hidden="true">
-        <div class="brand-mark brand-mark-large">B</div>
+      <div class="login-visual">
+        <img
+          class="bidv-logo login-logo"
+          src="./assets/images/bidv-logo.svg"
+          alt="BIDV"
+        />
         <div>
           <p class="eyebrow light">BIDV TRAINING</p>
           <h1>Vững kiến thức.<br />Chủ động tương lai.</h1>
           <p class="login-copy">
             Không gian luyện thi và học tập tập trung dành cho cán bộ BIDV.
           </p>
+          <div class="login-about">
+            <p>
+              Sản phẩm xuất phát từ ý tưởng hỗ trợ các thí sinh tham gia cuộc Thi
+              CĐS Ngành ngân hàng 2026.
+            </p>
+            <strong>
+              Người viết: Lê Ngọc Hoàng - Trung tâm phát triển phần mềm
+            </strong>
+          </div>
         </div>
       </div>
       <div class="login-panel">
         <form id="loginForm" class="login-card" novalidate>
           <div class="mobile-brand">
-            <div class="brand-mark">B</div>
-            <strong>BIDV Training</strong>
+            <img class="bidv-logo" src="./assets/images/bidv-logo.svg" alt="BIDV" />
+            <span>BIDV Training</span>
           </div>
           <p class="eyebrow">TRUY CẬP HỆ THỐNG</p>
           <h2 id="loginTitle">Chào mừng trở lại</h2>
@@ -57,6 +70,15 @@
           </p>
           <button class="button primary wide" type="submit">Đăng nhập</button>
           <p class="security-note">🔒 Phiên truy cập được lưu trên thiết bị này.</p>
+          <div class="login-about login-about-mobile">
+            <p>
+              Sản phẩm xuất phát từ ý tưởng hỗ trợ các thí sinh tham gia cuộc Thi
+              CĐS Ngành ngân hàng 2026.
+            </p>
+            <strong>
+              Người viết: Lê Ngọc Hoàng - Trung tâm phát triển phần mềm
+            </strong>
+          </div>
         </form>
       </div>
     </section>
@@ -64,7 +86,9 @@
     <div id="appShell" class="app-shell" hidden>
       <header class="topbar">
         <button class="brand-button" data-action="go-home" type="button">
-          <span class="brand-mark">B</span>
+          <span class="topbar-logo-wrap">
+            <img class="bidv-logo topbar-logo" src="./assets/images/bidv-logo.svg" alt="BIDV" />
+          </span>
           <span>
             <strong>BIDV Training</strong>
             <small>Học tập &amp; luyện thi</small>

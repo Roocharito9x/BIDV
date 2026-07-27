@@ -82,10 +82,23 @@ button { color: inherit; }
 }
 .login-visual h1 { margin: 16px 0; font-size: 32px; line-height: 44px; letter-spacing: 0; }
 .login-copy { max-width: 560px; color: rgba(255,255,255,.82); font-size: 16px; line-height: 24px; }
+.bidv-logo { display: block; width: auto; height: 40px; }
+.login-logo {
+  width: 184px; height: auto; padding: 10px 14px; border-radius: 12px;
+  background: white; box-shadow: var(--shadow-m);
+}
+.login-about {
+  max-width: 620px; margin-top: 24px; padding: 16px;
+  border-left: 3px solid var(--brand-secondary-500); border-radius: 0 8px 8px 0;
+  background: rgba(0, 36, 36, .26);
+}
+.login-about p { margin: 0; color: rgba(255,255,255,.88); font-size: 14px; line-height: 20px; }
+.login-about strong { display: block; margin-top: 8px; color: white; font-size: 14px; line-height: 20px; font-weight: 500; }
+.login-about-mobile { display: none; }
 .login-panel { display: grid; place-items: center; padding: 32px; background: white; }
 .login-card { width: min(100%, 430px); }
 .login-card h2 { margin: 8px 0; font-size: 28px; line-height: 36px; letter-spacing: 0; }
-.mobile-brand { display: none; align-items: center; gap: 10px; margin-bottom: 48px; }
+.mobile-brand { display: none; align-items: center; gap: 12px; margin-bottom: 48px; color: var(--brand-primary-600); font-size: 16px; line-height: 24px; font-weight: 500; }
 
 .brand-mark {
   display: inline-grid; place-items: center; flex: 0 0 auto; width: 42px; height: 42px;
@@ -140,6 +153,8 @@ input:focus, select:focus { border-color: var(--brand-primary-500); box-shadow: 
   color: white; background: var(--bg-top-nav); box-shadow: var(--shadow-m);
 }
 .brand-button { display: flex; align-items: center; gap: 12px; padding: 0; border: 0; background: none; text-align: left; cursor: pointer; }
+.topbar-logo-wrap { display: grid; place-items: center; width: 84px; height: 40px; padding: 6px 8px; border-radius: 8px; background: white; }
+.topbar-logo { max-width: 68px; height: auto; }
 .brand-button strong, .brand-button small { display: block; color: white; }
 .brand-button small { margin-top: 2px; color: var(--neutral-300); font-size: 12px; line-height: 16px; }
 .topbar .button.ghost { color: white; }
@@ -315,7 +330,11 @@ th { background: var(--neutral-100); font-size: 12px; line-height: 16px; text-tr
   .login-screen { grid-template-columns: 1fr; }
   .login-visual { display: none; }
   .mobile-brand { display: flex; }
+  .mobile-brand .bidv-logo { width: 116px; height: auto; }
   .login-panel { min-height: 100vh; }
+  .login-about-mobile { display: block; margin-top: 24px; border-left-color: var(--brand-secondary-500); background: var(--neutral-100); }
+  .login-about-mobile p { color: var(--neutral-700); }
+  .login-about-mobile strong { color: var(--neutral-900); }
   .choice-grid, .upload-layout { grid-template-columns: 1fr; }
   .exam-grid, .flashcard-grid { grid-template-columns: repeat(2, 1fr); }
   .guide-panel { position: static; }
@@ -325,7 +344,7 @@ th { background: var(--neutral-100); font-size: 12px; line-height: 16px; text-tr
 
 @media (max-width: 640px) {
   .topbar { min-height: 60px; padding: 0 16px; }
-  .brand-button small, .topbar-actions .button:first-child { display: none; }
+  .brand-button small, .brand-button > span:last-child, .topbar-actions .button:first-child { display: none; }
   .page { width: min(100% - 24px, 1180px); padding: 28px 0 54px; }
   .page-narrow { width: min(100% - 24px, 980px); padding-top: 22px; }
   .hero { padding: 24px 16px; border-radius: 12px; }
