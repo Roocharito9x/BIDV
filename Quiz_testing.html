@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Nền tảng luyện thi và học tập kiến thức BIDV"
+    />
+    <title>BIDV Training</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+  </head>
+  <body>
+    <div id="toastRegion" class="toast-region" aria-live="polite"></div>
+
+    <section id="loginScreen" class="screen login-screen" aria-labelledby="loginTitle">
+      <div class="login-visual" aria-hidden="true">
+        <div class="brand-mark brand-mark-large">B</div>
+        <div>
+          <p class="eyebrow light">BIDV TRAINING</p>
+          <h1>Vững kiến thức.<br />Chủ động tương lai.</h1>
+          <p class="login-copy">
+            Không gian luyện thi và học tập tập trung dành cho cán bộ BIDV.
+          </p>
+        </div>
+      </div>
+      <div class="login-panel">
+        <form id="loginForm" class="login-card" novalidate>
+          <div class="mobile-brand">
+            <div class="brand-mark">B</div>
+            <strong>BIDV Training</strong>
+          </div>
+          <p class="eyebrow">TRUY CẬP HỆ THỐNG</p>
+          <h2 id="loginTitle">Chào mừng trở lại</h2>
+          <p class="muted">Nhập mật khẩu để bắt đầu phiên học tập.</p>
+          <label class="field-label" for="passwordInput">Mật khẩu</label>
+          <div class="password-field">
+            <input
+              id="passwordInput"
+              type="password"
+              autocomplete="current-password"
+              placeholder="Nhập mật khẩu"
+              required
+            />
+            <button id="togglePassword" class="icon-button" type="button" aria-label="Hiện mật khẩu">
+              👁
+            </button>
+          </div>
+          <p id="loginError" class="field-error" hidden>
+            Mật khẩu chưa đúng. Vui lòng kiểm tra lại.
+          </p>
+          <button class="button primary wide" type="submit">Đăng nhập</button>
+          <p class="security-note">🔒 Phiên truy cập được lưu trên thiết bị này.</p>
+        </form>
+      </div>
+    </section>
+
+    <div id="appShell" class="app-shell" hidden>
+      <header class="topbar">
+        <button class="brand-button" data-action="go-home" type="button">
+          <span class="brand-mark">B</span>
+          <span>
+            <strong>BIDV Training</strong>
+            <small>Học tập &amp; luyện thi</small>
+          </span>
+        </button>
+        <div class="topbar-actions">
+          <button class="button ghost compact" data-action="open-library" type="button">
+            Thư viện đề
+          </button>
+          <button class="button ghost compact" data-action="logout" type="button">
+            Đăng xuất
+          </button>
+        </div>
+      </header>
+
+      <main>
+        <section id="homeView" class="view page" aria-labelledby="homeTitle">
+          <div class="hero">
+            <div>
+              <p class="eyebrow">TRUNG TÂM ÔN LUYỆN BIDV</p>
+              <h1 id="homeTitle">Hôm nay bạn muốn học theo cách nào?</h1>
+              <p>
+                Chọn một bộ đề có sẵn hoặc nhập file Excel để tạo không gian luyện
+                thi của riêng bạn.
+              </p>
+            </div>
+            <div class="hero-stat">
+              <strong id="homeExamCount">1</strong>
+              <span>bộ đề trên thiết bị</span>
+            </div>
+          </div>
+
+          <div class="choice-grid">
+            <button class="choice-card existing" data-action="open-library" type="button">
+              <span class="choice-icon">✓</span>
+              <span class="choice-content">
+                <span class="choice-kicker">BẮT ĐẦU NGAY</span>
+                <strong>Đề thi sẵn có</strong>
+                <span>Chọn bộ đề, luyện tập, kiểm tra và xem lại kết quả.</span>
+              </span>
+              <span class="choice-arrow">→</span>
+            </button>
+            <button class="choice-card upload" data-action="open-upload" type="button">
+              <span class="choice-icon">＋</span>
+              <span class="choice-content">
+                <span class="choice-kicker">TẠO NỘI DUNG MỚI</span>
+                <strong>Thêm bộ đề thi mới</strong>
+                <span>Tải file Excel, kiểm tra dữ liệu và tự động tạo bài luyện.</span>
+              </span>
+              <span class="choice-arrow">→</span>
+            </button>
+          </div>
+        </section>
+
+        <section id="libraryView" class="view page" hidden aria-labelledby="libraryTitle">
+          <div class="page-heading">
+            <div>
+              <button class="text-button" data-action="go-home" type="button">← Trang chính</button>
+              <p class="eyebrow">THƯ VIỆN ĐỀ THI</p>
+              <h1 id="libraryTitle">Chọn bộ đề để bắt đầu</h1>
+              <p class="muted">Tiến độ được lưu riêng cho từng bộ đề trên thiết bị.</p>
+            </div>
+            <button class="button secondary" data-action="open-upload" type="button">
+              ＋ Thêm bộ đề mới
+            </button>
+          </div>
+          <div id="examGrid" class="exam-grid"></div>
+        </section>
+
+        <section id="uploadView" class="view page" hidden aria-labelledby="uploadTitle">
+          <div class="page-heading">
+            <div>
+              <button class="text-button" data-action="go-home" type="button">← Trang chính</button>
+              <p class="eyebrow">NHẬP DỮ LIỆU</p>
+              <h1 id="uploadTitle">Thêm bộ đề thi mới</h1>
+              <p class="muted">File được xử lý ngay trên thiết bị và không gửi lên máy chủ.</p>
+            </div>
+            <a class="button secondary" href="./templates/Mau_bo_de_BIDV.xlsx" download>
+              ↓ Tải file Excel mẫu
+            </a>
+          </div>
+
+          <div class="upload-layout">
+            <div class="panel">
+              <label class="field-label" for="examNameInput">Tên bộ đề</label>
+              <input
+                id="examNameInput"
+                type="text"
+                maxlength="120"
+                placeholder="Ví dụ: Ôn tập nghiệp vụ tín dụng 2026"
+              />
+
+              <div id="dropZone" class="drop-zone" tabindex="0" role="button">
+                <input
+                  id="excelInput"
+                  type="file"
+                  accept=".xlsx,.xls"
+                  hidden
+                />
+                <span class="drop-icon">XL</span>
+                <strong>Kéo thả file Excel vào đây</strong>
+                <span>hoặc bấm để chọn file `.xlsx`, `.xls`</span>
+                <button class="button secondary" type="button">Chọn file Excel</button>
+              </div>
+
+              <div id="uploadResult" class="upload-result" hidden></div>
+              <div id="previewPanel" class="preview-panel" hidden>
+                <div class="preview-heading">
+                  <div>
+                    <strong id="previewTitle">Xem trước dữ liệu</strong>
+                    <span id="previewSummary"></span>
+                  </div>
+                  <button id="saveImportedExam" class="button primary" type="button">
+                    Lưu bộ đề
+                  </button>
+                </div>
+                <div class="table-wrap">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>STT</th>
+                        <th>Câu hỏi</th>
+                        <th>Đáp án đúng</th>
+                      </tr>
+                    </thead>
+                    <tbody id="previewRows"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <aside class="panel guide-panel">
+              <p class="eyebrow">CẤU TRÚC FILE</p>
+              <h2>Excel cần đủ 7 cột</h2>
+              <ol class="column-guide">
+                <li><span>1</span>STT</li>
+                <li><span>2</span>Câu hỏi</li>
+                <li><span>3</span>Phương Án A</li>
+                <li><span>4</span>Phương Án B</li>
+                <li><span>5</span>Phương Án C</li>
+                <li><span>6</span>Phương Án D</li>
+                <li><span>7</span>Đáp án đúng</li>
+              </ol>
+              <div class="info-callout">
+                <strong>Quy tắc đáp án</strong>
+                <span>Cột “Đáp án đúng” chỉ nhận A, B, C hoặc D.</span>
+              </div>
+              <p class="guide-note">
+                Có thể bổ sung cột <strong>Chủ đề</strong> và
+                <strong>Giải thích đáp án</strong>. Hệ thống sẽ tự nhận diện.
+              </p>
+            </aside>
+          </div>
+        </section>
+
+        <section id="examView" class="view exam-view" hidden aria-labelledby="examTitle">
+          <div class="exam-header">
+            <button class="text-button light-text" data-action="open-library" type="button">
+              ← Thư viện đề
+            </button>
+            <div>
+              <p class="eyebrow light">BỘ ĐỀ ĐANG HỌC</p>
+              <h1 id="examTitle">BIDV Quiz</h1>
+              <p id="examMeta"></p>
+            </div>
+            <button id="deleteExamButton" class="button danger compact" type="button" hidden>
+              Xóa bộ đề
+            </button>
+          </div>
+
+          <nav class="exam-tabs" aria-label="Chức năng bộ đề">
+            <button class="exam-tab active" data-exam-tab="questions" type="button">
+              Danh sách câu hỏi
+            </button>
+            <button class="exam-tab" data-exam-tab="practice" type="button">
+              Luyện thi
+            </button>
+            <button class="exam-tab" data-exam-tab="flashcards" type="button">
+              Flashcard
+            </button>
+          </nav>
+
+          <div id="questionsPanel" class="exam-panel page-narrow">
+            <div class="toolbar">
+              <label class="search-field">
+                <span>⌕</span>
+                <input id="questionSearch" type="search" placeholder="Tìm câu hỏi, phương án hoặc chủ đề..." />
+              </label>
+              <span id="questionCount" class="count-pill"></span>
+            </div>
+            <div id="questionList" class="question-list"></div>
+          </div>
+
+          <div id="practicePanel" class="exam-panel page-narrow" hidden>
+            <div id="practiceSetup" class="practice-setup">
+              <div class="section-heading">
+                <p class="eyebrow">CẤU HÌNH BÀI LUYỆN</p>
+                <h2>Tạo phiên thi phù hợp với bạn</h2>
+              </div>
+              <div class="setup-grid">
+                <label class="setup-card">
+                  <span>Số câu</span>
+                  <select id="practiceCount"></select>
+                </label>
+                <label class="setup-card">
+                  <span>Thứ tự</span>
+                  <select id="practiceOrder">
+                    <option value="random">Ngẫu nhiên</option>
+                    <option value="sequential">Theo thứ tự</option>
+                  </select>
+                </label>
+                <label class="setup-card">
+                  <span>Thời gian mỗi câu</span>
+                  <select id="practiceTimer">
+                    <option value="15">15 giây</option>
+                    <option value="30">30 giây</option>
+                    <option value="0">Không giới hạn</option>
+                  </select>
+                </label>
+                <label class="setup-card">
+                  <span>Hiện đáp án sau khi chọn</span>
+                  <select id="practiceReveal">
+                    <option value="yes">Có</option>
+                    <option value="no">Không</option>
+                  </select>
+                </label>
+              </div>
+              <div class="setup-actions">
+                <button id="startPractice" class="button primary large" type="button">
+                  Bắt đầu luyện thi
+                </button>
+                <button id="startWrongPractice" class="button secondary large" type="button" hidden>
+                  Luyện lại câu sai
+                </button>
+              </div>
+            </div>
+
+            <div id="practiceQuestion" class="quiz-card" hidden>
+              <div class="quiz-progress-row">
+                <span id="quizPosition"></span>
+                <span id="quizTimer" class="timer-pill"></span>
+              </div>
+              <div class="progress-track"><span id="quizProgress"></span></div>
+              <p id="quizCategory" class="eyebrow"></p>
+              <h2 id="quizQuestionText"></h2>
+              <div id="quizOptions" class="quiz-options"></div>
+              <div id="quizFeedback" class="quiz-feedback" hidden></div>
+              <button id="nextQuestionButton" class="button primary wide" type="button" hidden>
+                Câu tiếp theo →
+              </button>
+            </div>
+
+            <div id="practiceResult" class="result-card" hidden>
+              <span id="resultIcon" class="result-icon">🏆</span>
+              <p class="eyebrow">KẾT QUẢ PHIÊN LUYỆN</p>
+              <h2 id="resultTitle">Hoàn thành</h2>
+              <strong id="resultScore" class="result-score"></strong>
+              <div id="resultStats" class="result-stats"></div>
+              <div class="setup-actions">
+                <button id="retryPractice" class="button primary" type="button">Làm lại</button>
+                <button id="backToSetup" class="button secondary" type="button">Cấu hình bài khác</button>
+              </div>
+            </div>
+          </div>
+
+          <div id="flashcardsPanel" class="exam-panel page-narrow" hidden>
+            <div id="flashcardHome">
+              <div class="section-heading">
+                <p class="eyebrow">HỌC BẰNG FLASHCARD</p>
+                <h2>Chọn bộ thẻ muốn ôn tập</h2>
+                <p class="muted">Bộ đề Excel sẽ tự tạo flashcard từ câu hỏi và đáp án đúng.</p>
+              </div>
+              <div id="flashcardSetGrid" class="flashcard-grid"></div>
+            </div>
+            <div id="flashcardStudy" class="flashcard-study" hidden>
+              <div class="quiz-progress-row">
+                <button id="closeFlashcard" class="text-button" type="button">← Chọn bộ khác</button>
+                <span id="flashcardPosition"></span>
+              </div>
+              <button id="flashcard" class="flashcard" type="button">
+                <span id="flashcardSideLabel" class="eyebrow">CÂU HỎI</span>
+                <strong id="flashcardText"></strong>
+                <small>Chạm để lật thẻ</small>
+              </button>
+              <div class="flashcard-actions">
+                <button id="flashcardPrev" class="button secondary" type="button">← Trước</button>
+                <button id="flashcardForgot" class="button danger-soft" type="button">Chưa nhớ</button>
+                <button id="flashcardRemembered" class="button success" type="button">Đã nhớ</button>
+                <button id="flashcardNext" class="button secondary" type="button">Tiếp →</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./assets/vendor/xlsx.full.min.js"></script>
+    <script type="module" src="./js/app.js"></script>
+  </body>
+</html>
