@@ -25,6 +25,12 @@ const COLUMN_ALIASES = {
   "phương án d": "Phương Án D",
   "đáp án d": "Phương Án D",
   d: "Phương Án D",
+  "phương án e": "Phương Án E",
+  "đáp án e": "Phương Án E",
+  e: "Phương Án E",
+  "phương án f": "Phương Án F",
+  "đáp án f": "Phương Án F",
+  f: "Phương Án F",
   "đáp án đúng": "Đáp án đúng",
   answer: "Đáp án đúng",
   "chủ đề": "Chủ đề",
@@ -46,7 +52,7 @@ function normalizeAnswer(value) {
   const match = String(value ?? "")
     .trim()
     .toUpperCase()
-    .match(/(?:PHƯƠNG\s*ÁN|ĐÁP\s*ÁN)?\s*([A-D])$/);
+    .match(/(?:PHƯƠNG\s*ÁN|ĐÁP\s*ÁN)?\s*([A-F])$/);
   return match?.[1] ?? "";
 }
 
@@ -118,6 +124,10 @@ export async function parseExamWorkbook(file, examName) {
       C: String(row[indexes["Phương Án C"]] ?? "").trim(),
       D: String(row[indexes["Phương Án D"]] ?? "").trim(),
     };
+    for (const key of ["E", "F"]) {
+      const value = String(row[indexes[`Phương Án ${key}`]] ?? "").trim();
+      if (value) options[key] = value;
+    }
     const correctAnswer = normalizeAnswer(row[indexes["Đáp án đúng"]]);
 
     if (!order) errors.push(`Dòng ${excelRow}: thiếu STT.`);
@@ -129,7 +139,9 @@ export async function parseExamWorkbook(file, examName) {
       if (!option) errors.push(`Dòng ${excelRow}: thiếu Phương án ${key}.`);
     }
     if (!correctAnswer) {
-      errors.push(`Dòng ${excelRow}: Đáp án đúng phải là A, B, C hoặc D.`);
+      errors.push(`Dòng ${excelRow}: Đáp án đúng phải là một chữ cái từ A đến F.`);
+    } else if (!options[correctAnswer]) {
+      errors.push(`Dòng ${excelRow}: Phương án đúng ${correctAnswer} đang để trống.`);
     }
 
     questions.push({

@@ -1,0 +1,711 @@
+{
+  "schemaVersion": 1,
+  "id": "hcqt",
+  "name": "Bộ đề HCQT",
+  "description": "50 câu hỏi ôn tập vị trí Hành chính quản trị (HCQT), kèm thông tin văn bản tham chiếu.",
+  "source": "system",
+  "createdAt": "2024-05-15T00:00:00.000Z",
+  "questions": [
+    {
+      "id": "1",
+      "order": 1,
+      "category": "Hành chính quản trị",
+      "question": "Hiện tại BIDV có bao nhiêu chi nhánh trong nước?",
+      "options": {
+        "A": "200",
+        "B": "195",
+        "C": "190",
+        "D": "181"
+      },
+      "correctAnswer": "C",
+      "explanation": ""
+    },
+    {
+      "id": "2",
+      "order": 2,
+      "category": "Hành chính quản trị",
+      "question": "BIDV hiện đang sử dụng kênh mạng xã hội NỘI BỘ nào?",
+      "options": {
+        "A": "BIDVZone/BIDV Gapowork",
+        "B": "BIDV Gaponet",
+        "C": "Intranet",
+        "D": "BIDV không có mạng xã hội nội bộ"
+      },
+      "correctAnswer": "A",
+      "explanation": "Thực tế hoạt động"
+    },
+    {
+      "id": "3",
+      "order": 3,
+      "category": "Hành chính quản trị",
+      "question": "Đâu là tầm nhìn của BIDV đến năm 2030?",
+      "options": {
+        "A": "Là định chế tài chính hàng đầu khu vực Đông Nam Á, phấn đấu thuộc nhóm 100 Ngân hàng lớn nhất khu vực Châu Á.",
+        "B": "Là định chế tài chính hàng đầu và có nền tảng số tốt nhất khu vực Đông Nam Á, phấn đấu thuộc nhóm 100 Ngân hàng lớn nhất khu vực Châu Á.",
+        "C": "Là định chế tài chính hàng đầu khu vực Đông Nam Á, có nền tảng số tốt nhất Việt Nam, phấn đấu thuộc nhóm 100 Ngân hàng lớn nhất khu vực Châu Á.",
+        "D": "Là định chế tài chính hàng đầu khu vực Đông Nam Á, phấn đấu thuộc nhóm 100 Ngân hàng lớn nhất khu vực Châu Á và nhóm 500 Ngân hàng lớn nhất thế giới."
+      },
+      "correctAnswer": "C",
+      "explanation": "Nghị quyết 22/NQ-BIDV ngày 11/01/2021 của HĐQT về việc phê duyệt Chiến lược phát triển kinh doanh của BIDV đến năm 2025, tầm nhìn đến năm 2030 — Điều 1, mục 2"
+    },
+    {
+      "id": "4",
+      "order": 4,
+      "category": "Hành chính quản trị",
+      "question": "BIDV KHÔNG có hiện diện, chi nhánh/góp vốn thành lập tại quốc gia nào sau đây?",
+      "options": {
+        "A": "Campuchia",
+        "B": "Lào",
+        "C": "Nga",
+        "D": "Mĩ"
+      },
+      "correctAnswer": "D",
+      "explanation": "https://bidv.com.vn/vn/ve-bidv/hien-dien-thuong-mai-nuoc-ngoai/#scroll-index-3"
+    },
+    {
+      "id": "5",
+      "order": 5,
+      "category": "Hành chính quản trị",
+      "question": "Khẩu hiệu (slogan) hiện nay của BIDV là gì?",
+      "options": {
+        "A": "Chia sẻ cơ hội, hợp tác thành công",
+        "B": "Vững bước tiên phong, đồng hành phát triển",
+        "C": "Đồng hành cùng phát triển",
+        "D": "Hướng đến khách  hàng, chuyên nghiệp, tin cậy"
+      },
+      "correctAnswer": "B",
+      "explanation": ""
+    },
+    {
+      "id": "6",
+      "order": 6,
+      "category": "Hành chính quản trị",
+      "question": "Tổ Tài trợ thương mại tại chi nhánh trực thuộc phòng nào sau đây?",
+      "options": {
+        "A": "Phòng Khách hàng doanh nghiệp",
+        "B": "Phòng Quản lý rủi ro",
+        "C": "Phòng Quản lý nội bộ",
+        "D": "Phòng Quản trị tín dụng"
+      },
+      "correctAnswer": "A",
+      "explanation": "Quyết định 1696/QĐ-BIDV ngày 29/09/2017 về Sửa đổi, bổ sung một số điều quy định 3166. — Điều 1"
+    },
+    {
+      "id": "7",
+      "order": 7,
+      "category": "Hành chính quản trị",
+      "question": "Nhiệm vụ \"Trực tiếp thực hiện tác nghiệp và quản trị cho vay, bảo lãnh đối với khách hàng\" thuộc chức năng nhiệm vụ của phòng nào?",
+      "options": {
+        "A": "Phòng giao dịch khách hàng",
+        "B": "Phòng Kế hoạch - Tài chính",
+        "C": "Phòng Quản lý nội bộ",
+        "D": "Phòng Quản trị tín dụng"
+      },
+      "correctAnswer": "D",
+      "explanation": "Quy định 3166/QĐ-BIDV ngày 30/11/2016 — Điều 9"
+    },
+    {
+      "id": "8",
+      "order": 8,
+      "category": "Hành chính quản trị",
+      "question": "Công tác \"tổ chức lưu trữ hồ sơ, quản lý thông tin (thu thập, xử lý, lưu trữ, phân tích, bảo mật, cung cấp…) tổng hợp và lập các báo cáo, thống kê trong phạm vi nhiệm vụ, nghiệp vụ của Phòng để phục vụ công tác quản trị điều hành của Chi nhánh\" là chức năng của phòng nào tại chi nhánh?",
+      "options": {
+        "A": "Chức năng chung của tất cả các phòng",
+        "B": "Phòng giao dịch khách hàng",
+        "C": "Phòng Kế hoạch - Tài chính",
+        "D": "Phòng Tổ chức hành chính/Quản lý nội bộ"
+      },
+      "correctAnswer": "A",
+      "explanation": "Quy định 3166/QĐ-BIDV ngày 30/11/2016 — Điều 4"
+    },
+    {
+      "id": "9",
+      "order": 9,
+      "category": "Hành chính quản trị",
+      "question": "Nhiệm vụ chính của các Phòng Giao dịch khách hàng không bao gồm nhiệm vụ nào sau đây?",
+      "options": {
+        "A": "Trực tiếp bán sản phẩm/dịch vụ tại quầy, giao dịch với khách hàng và thực hiện tác nghiệp theo quy định",
+        "B": "Quản lý tài khoản, nhập thông tin khách hàng và hạch toán kế toán các giao dịch với khách hàng",
+        "C": "Đề xuất, tham mưu với Giám đốc Chi nhánh về các biện pháp, điều kiện đảm bảo an toàn kho, quỹ và an ninh tiền tệ",
+        "D": "Kiểm tra tính pháp lý, tính đầy đủ, đúng đắn của các chứng từ giao dịch"
+      },
+      "correctAnswer": "C",
+      "explanation": "Quy định 3166/QĐ-BIDV ngày 30/11/2016 — Điều 10-11"
+    },
+    {
+      "id": "10",
+      "order": 10,
+      "category": "Hành chính quản trị",
+      "question": "Nhiệm vụ chính của Phòng Quản trị tín dụng không bao gồm nhiệm vụ nào sau đây?",
+      "options": {
+        "A": "Chịu trách nhiệm kiểm tra, rà soát đảm bảo tính đầy đủ, chính xác của hồ sơ tín dụng theo đúng quy định",
+        "B": "Theo dõi diễn biến các khoản tín dụng; đề xuất ý kiến về việc trích lập dự phòng rủi ro.",
+        "C": "Thực hiện tính toán trích lập dự phòng rủi ro theo kết quả phân loại nợ của Phòng Khách hàng theo đúng các quy định của BIDV",
+        "D": "Quản lý tài khoản, nhập thông tin khách hàng và hạch toán kế toán các giao dịch với khách hàng"
+      },
+      "correctAnswer": "D",
+      "explanation": "Quy định 3166/QĐ-BIDV ngày 30/11/2016 — Điều 9-10"
+    },
+    {
+      "id": "11",
+      "order": 11,
+      "category": "Hành chính quản trị",
+      "question": "Theo Nội quy lao động của BIDV, thời giờ làm việc đối với lao động bảo vệ được quy định như thế nào?",
+      "options": {
+        "A": "Thực hiện chế độ ngày làm việc theo ca, mỗi ca 8 giờ",
+        "B": "Thực hiện chế độ ngày làm việc theo ca, mỗi ca 10 giờ",
+        "C": "Thực hiện chế độ ngày làm việc theo ca, mỗi ca 12 giờ",
+        "D": "Thực hiện chế độ làm việc luân phiên ngày đêm"
+      },
+      "correctAnswer": "A",
+      "explanation": "Quyết định số 566/QĐ-BIDV ngày 25/06/2021 — Chương II, Điều 3"
+    },
+    {
+      "id": "12",
+      "order": 12,
+      "category": "Hành chính quản trị",
+      "question": "\"Cán bộ được nghỉ mỗi ngày 60 phút trong thời gian làm việc và được tính là thời giờ làm việc trong ngày\". Chế độ này áp dụng với cán bộ nào sau đây (theo Nội quy lao động của BIDV):",
+      "options": {
+        "A": "Lao động nữ trong thời gian nuôi con dưới 24 tháng tuổi",
+        "B": "Lao động nữ trong thời gian nuôi con dưới 12 tháng tuổi",
+        "C": "Lao động nữ đang trong thời gian mang thai",
+        "D": "Lao động nữ đang trong thời gian điều trị ốm đau, bệnh tật"
+      },
+      "correctAnswer": "B",
+      "explanation": "Quyết định số 566/QĐ-BIDV ngày 25/06/2021 — Chương II, Điều 4"
+    },
+    {
+      "id": "13",
+      "order": 13,
+      "category": "Hành chính quản trị",
+      "question": "Theo Nội quy lao động của BIDV, số ngày nghỉ hàng năm của cán bộ được tăng lên như thế nào?",
+      "options": {
+        "A": "Cứ mỗi năm làm việc thì được tăng thêm tương ứng 1 ngày nghỉ",
+        "B": "Cứ 2 năm làm việc thì được tăng thêm tương ứng 1 ngày nghỉ",
+        "C": "Cứ 3 năm làm việc thì được tăng thêm tương ứng 1 ngày nghỉ",
+        "D": "Cứ 5 năm làm việc thì được tăng thêm tương ứng 1 ngày nghỉ"
+      },
+      "correctAnswer": "D",
+      "explanation": "Quyết định số 566/QĐ-BIDV ngày 25/06/2021 — Chương II, Điều 8.3"
+    },
+    {
+      "id": "14",
+      "order": 14,
+      "category": "Hành chính quản trị",
+      "question": "Theo Nội quy lao động của BIDV, trong trường hợp đặc biệt, nếu chu kỳ lao động không thể nghỉ hàng tuần, BIDV có trách nhiệm bảo đảm người lao động được nghỉ ít nhất bao nhiêu ngày trong một tháng?",
+      "options": {
+        "A": "4 ngày",
+        "B": "6 ngày",
+        "C": "8 ngày",
+        "D": "10 ngày"
+      },
+      "correctAnswer": "C",
+      "explanation": "Quyết định số 566/QĐ-BIDV ngày 25/06/2021 — Chương II, Điều 7"
+    },
+    {
+      "id": "15",
+      "order": 15,
+      "category": "Hành chính quản trị",
+      "question": "Theo Nội quy lao động của BIDV, trong một năm tài chính, người lao động đang thực hiện Hợp đồng lao động không xác định thời hạn được nghỉ không hưởng lương tối đa là bao nhiêu ngày?",
+      "options": {
+        "A": "30 ngày",
+        "B": "60 ngày",
+        "C": "90 ngày",
+        "D": "120 ngày"
+      },
+      "correctAnswer": "C",
+      "explanation": "Quyết định số 566/QĐ-BIDV ngày 25/06/2021 — Chương II, Điều 11"
+    },
+    {
+      "id": "16",
+      "order": 16,
+      "category": "Hành chính quản trị",
+      "question": "Theo Nội quy lao động của BIDV, Người lao động được làm gì sau đây:",
+      "options": {
+        "A": "Ra khỏi trụ sở để giải quyết việc riêng trong giờ làm việc",
+        "B": "Tiếp khách cho việc riêng tại nơi làm việc",
+        "C": "Sử dụng máy vi tính được BIDV trang bị để giải quyết việc cá  nhân",
+        "D": "Làm việc ngoài giờ theo yêu cầu công việc"
+      },
+      "correctAnswer": "D",
+      "explanation": "Quyết định số 566/QĐ-BIDV ngày 25/06/2021 — Chương III, Điều 12, 13"
+    },
+    {
+      "id": "17",
+      "order": 17,
+      "category": "Hành chính quản trị",
+      "question": "Theo Nội quy lao động của BIDV, đâu là hành vi vi phạm kỷ luật lao động?",
+      "options": {
+        "A": "Nghỉ việc không có lý do",
+        "B": "Ra khỏi Trụ sở trong giờ làm việc vì việc riêng mà không xin phép cấp có thẩm quyền",
+        "C": "Đi làm muộn",
+        "D": "A, B và C",
+        "E": "B và C"
+      },
+      "correctAnswer": "D",
+      "explanation": "Quyết định số 566/QĐ-BIDV ngày 25/06/2021 — Chương VIII, mục 1, Điều 23"
+    },
+    {
+      "id": "18",
+      "order": 18,
+      "category": "Hành chính quản trị",
+      "question": "Theo Nội quy lao động của BIDV, hành vi nào sau đây vi phạm về an toàn lao động, vệ sinh lao động?",
+      "options": {
+        "A": "Thường xuyên sắp xếp lại tài liệu gọn gàng, ngăn nắp",
+        "B": "Kiểm tra, bảo dưỡng máy tính định kỳ",
+        "C": "Sử dụng, bảo quản không đúng quy trình, quy phạm các thiết bị điện",
+        "D": "Tổ chức vệ sinh nơi làm việc hàng ngày"
+      },
+      "correctAnswer": "C",
+      "explanation": "Quyết định số 566/QĐ-BIDV ngày 25/06/2021 — Chương VIII, mục 1, Điều 25"
+    },
+    {
+      "id": "19",
+      "order": 19,
+      "category": "Hành chính quản trị",
+      "question": "Theo Nội quy lao động của BIDV, đâu là hình thức TIỀN xử lý kỷ luật?",
+      "options": {
+        "A": "Nhắc nhở",
+        "B": "Khiển trách",
+        "C": "Cảnh cáo",
+        "D": "Cách chức"
+      },
+      "correctAnswer": "A",
+      "explanation": "Quyết định số 566/QĐ-BIDV ngày 25/06/2021 — Chương VIII, mục 2, Điều 44, 45"
+    },
+    {
+      "id": "20",
+      "order": 20,
+      "category": "Hành chính quản trị",
+      "question": "Theo Nội quy lao động của BIDV, BIDV không được xử lý kỷ luật lao động đối với người lao động trong trường hợp nào sau đây?",
+      "options": {
+        "A": "Lao động vừa được luân chuyển công tác sang vị trí khác",
+        "B": "Lao động nữ đang trong thời gian mang thai, nghỉ thai sản",
+        "C": "Lao động vừa trải qua đợt điều trị ốm đau",
+        "D": "Lao động chưa đến kỳ hạn xem xét tăng lương"
+      },
+      "correctAnswer": "B",
+      "explanation": "Quyết định số 566/QĐ-BIDV ngày 25/06/2021 — Chương VIII, mục 2, Điều 43"
+    },
+    {
+      "id": "21",
+      "order": 21,
+      "category": "Hành chính quản trị",
+      "question": "Giám đốc Ban Quản lý Tài sản nội ngành có thẩm quyền phê duyệt kết quả thương thảo Dự án nhận chuyển nhượng bất động sản  có TMĐT:",
+      "options": {
+        "A": "từ 15 tỷ đồng đến dưới mức dự án nhóm B theo quy định.",
+        "B": "TMĐT từ 10 tỷ đồng đến dưới 15 tỷ đồng",
+        "C": "TMĐT từ 05 tỷ đồng đến dưới 10 tỷ đồng",
+        "D": "TMĐT dưới 05 tỷ đồng"
+      },
+      "correctAnswer": "C",
+      "explanation": "Phụ lục I/PCUQTS kèm theo Quyết định số 7069/QĐ-BIDV ngày 02/10/2023 của TGĐ về phân cấp, ủy quyền trong lĩnh vực đầu tư mua sắm, thuê và quản lý sử dụng tài sản — Mục 4 phần I Phụ lục I"
+    },
+    {
+      "id": "22",
+      "order": 22,
+      "category": "Hành chính quản trị",
+      "question": "Theo phân cấp ủy quyền của HĐQT, TGĐ BIDV, thẩm quyền quyết định phê duyệt dự án có TMĐT 44 tỷ thuộc thẩm quyền của cấp nào?",
+      "options": {
+        "A": "Tổng giám đốc",
+        "B": "Chủ tịch HĐQT",
+        "C": "HĐQT",
+        "D": "Phó Tổng giám đốc phụ trách Ban QLTSNN"
+      },
+      "correctAnswer": "A",
+      "explanation": "QĐ 1029/QĐ-BIDV — Điểm g, Khoản 1  Điều 2"
+    },
+    {
+      "id": "23",
+      "order": 23,
+      "category": "Hành chính quản trị",
+      "question": "Giám đốc Đơn vị thành viên có thẩm quyền điều chỉnh các nội dung cơ bản sau của Dự án nhận chuyển nhượng BĐS",
+      "options": {
+        "A": "TMĐT, quy mô, mục tiêu đầu tư của dự án có TMĐT từ 30 tỷ đồng trở lên.",
+        "B": "TMĐT, quy mô, mục tiêu đầu tư của dự án có TMĐT từ 15 tỷ đồng đến dưới 30 tỷ đồng.",
+        "C": "TMĐT, quy mô, mục tiêu đầu tư của dự án có TMĐT dưới 15 tỷ đồng.",
+        "D": "Điều chỉnh các nội dung còn lại (ngoại trừ các nội dung thuộc thẩm quyền của TSC như tăng TMĐT, thay đổi mục tiêu đầu tư của phương án)."
+      },
+      "correctAnswer": "D",
+      "explanation": "Phụ lục I/PCUQTS kèm theo Quyết định số 7069/QĐ-BIDV ngày 02/10/2023 của TGĐ về phân cấp, ủy quyền trong lĩnh vực đầu tư mua sắm, thuê và quản lý sử dụng tài sản — Mục 3 phần I Phụ lục I"
+    },
+    {
+      "id": "24",
+      "order": 24,
+      "category": "Hành chính quản trị",
+      "question": "Người có thẩm quyền phê duyệt quyết toán Dự án nhận chuyển nhượng BĐS có Tổng mức đầu tư 20 tỷ đồng là:",
+      "options": {
+        "A": "Hội đồng quản trị",
+        "B": "Tổng Giám đốc",
+        "C": "Phó Tổng Giám đốc phụ trách Ban QLTSNN",
+        "D": "Giám đốc Ban QLTSNN"
+      },
+      "correctAnswer": "B",
+      "explanation": "Phụ lục I/PCUQTS kèm theo Quyết định số 7069/QĐ-BIDV ngày 02/10/2023 của TGĐ về phân cấp, ủy quyền trong lĩnh vực đầu tư mua sắm, thuê và quản lý sử dụng tài sản — Mục 2, Mục 7 phần I Phụ lục I"
+    },
+    {
+      "id": "25",
+      "order": 25,
+      "category": "Hành chính quản trị",
+      "question": "Giám đốc Chi nhánh tại địa bàn Hà Nội và TP Hồ Chí Minh quyết định phương án thuê thêm diện tích bđs (đã có trong danh mục kế hoạch thuê được phê duyệt) với Tổng chi phí thuê là:",
+      "options": {
+        "A": "Từ 02 tỷ đồng/trụ sở/năm đến dưới 08 tỷ đồng/trụ sở/năm",
+        "B": "Dưới 02 tỷ đồng/trụ sở/năm hoặc số tiền trả trước dưới 02 tỷ đồng/trụ sở",
+        "C": "Dưới 750 triệu đồng/trụ sở/năm hoặc số tiền trả trước dưới 750 triệu đồng/trụ sở với thời hạn thuê tối đa 10 năm",
+        "D": "Dưới 01 tỷ đồng/trụ sở/năm hoặc số tiền trả trước dưới 01 tỷ đồng/trụ sở với thời hạn thuê tối đa 10 năm"
+      },
+      "correctAnswer": "C",
+      "explanation": "Phụ lục I/PCUQTS kèm theo Quyết định số 7069/QĐ-BIDV ngày 02/10/2023 của TGĐ về phân cấp, ủy quyền trong lĩnh vực đầu tư mua sắm, thuê và quản lý sử dụng tài sản — Mục 2 phần I Phụ lục II"
+    },
+    {
+      "id": "26",
+      "order": 26,
+      "category": "Hành chính quản trị",
+      "question": "Theo QĐ 1322/QĐ-BIDV ngày 30/12/2021 của HĐQT về Tiêu chuẩn, định mức sử dụng trụ sở làm việc, Khi xác định diện tích làm việc của công trình trụ sở BIDV đầu tư xây dựng mới, sẽ được xác định trên cơ sở số lượng cán bộ, nhân viên làm việc tại trụ sở chi nhánh như sau:",
+      "options": {
+        "A": "Đến 5 năm tiếp theo và mức tăng không quá 5%/năm.",
+        "B": "Đến 6 năm tiếp theo và mức tăng không quá 5%/năm.",
+        "C": "Đến 10 năm tiếp theo và mức tăng không quá 5%/năm.",
+        "D": "Số lượng lao động dự kiến tăng (hoặc giảm) đến 10 năm tiếp theo"
+      },
+      "correctAnswer": "C",
+      "explanation": "QĐ 1322/QĐ-BIDV — Khoản 1 Điều 4"
+    },
+    {
+      "id": "27",
+      "order": 27,
+      "category": "Hành chính quản trị",
+      "question": "Chánh Văn phòng TSC có thẩm quyền phê duyệt phương án thuê với Tổng chi phí thuê là :",
+      "options": {
+        "A": "Từ 02 tỷ đồng/trụ sở/năm đến dưới 08 tỷ đồng/trụ sở/năm",
+        "B": "Dưới 02 tỷ đồng/trụ sở/năm hoặc số tiền trả trước dưới 02 tỷ đồng/trụ sở",
+        "C": "Dưới 1,5 tỷ đồng/trụ sở/năm hoặc số tiền trả trước dưới 1,5 tỷ đồng/trụ sở với thời hạn thuê tối đa 10 năm",
+        "D": "Dưới 02 tỷ đồng/trụ sở/năm và số tiền trả trước dưới 02 tỷ đồng/trụ sở"
+      },
+      "correctAnswer": "D",
+      "explanation": "Phụ lục II/PCUQTS kèm theo Quyết định số 6960/QĐ-BIDV ngày 20/11/2020 ủa TGĐ về phân cấp, ủy quyền trong hoạt động đầu tư mua sắm, thuê hoạt động và quản lý tài sản — Mục 1 phần I Phụ lục II"
+    },
+    {
+      "id": "28",
+      "order": 28,
+      "category": "Hành chính quản trị",
+      "question": "Người có thẩm quyền phê duyệt điều chỉnh nội dung hợp đồng thuê trụ sở có giá trị 21 tỷ đồng/năm khi bất động sản thuê có sự thay đổi pháp nhân bên cho thuê, đại diện bên thuê, cơ quan quản lý nhà nước thay đổi tên, địa chỉ của bất động sản",
+      "options": {
+        "A": "Tổng Giám đốc",
+        "B": "Phó Tổng Giám đốc phụ trách Ban QLTSNN",
+        "C": "Giám đốc Ban QLTSNN",
+        "D": "Giám đốc ĐVTV"
+      },
+      "correctAnswer": "D",
+      "explanation": "Phụ lục II/PCUQTS kèm theo Quyết định số 7069/QĐ-BIDV ngày 02/10/2023 của TGĐ về phân cấp, ủy quyền trong lĩnh vực đầu tư mua sắm, thuê và quản lý sử dụng tài sản — Mục 4 phần I Phụ lục II"
+    },
+    {
+      "id": "29",
+      "order": 29,
+      "category": "Hành chính quản trị",
+      "question": "Chi nhánh tiến hành gia hạn thời gian thuê 6 tháng đối với Hợp đồng thuê có giá trị 3 tỷ đồng/năm với mức điều chỉnh giá tăng 15% so với đơn giá kỳ cuối của Hợp đồng trước khi gia hạn. Người có thẩm quyền quyết định phương án tiếp tục gia hạn này là",
+      "options": {
+        "A": "Hội đồng quản trị",
+        "B": "Tổng Giám đốc",
+        "C": "Phó Tổng Giám đốc phụ trách Ban QLTSNN",
+        "D": "Giám đốc Ban QLTSNN"
+      },
+      "correctAnswer": "C",
+      "explanation": "Phụ lục II/PCUQTS kèm theo Quyết định số 7069/QĐ-BIDV ngày 02/10/2023 của TGĐ về phân cấp, ủy quyền trong lĩnh vực đầu tư mua sắm, thuê và quản lý sử dụng tài sản — Điểm 1, Điểm 2 - Mục 3 phần I Phụ lục II"
+    },
+    {
+      "id": "30",
+      "order": 30,
+      "category": "Hành chính quản trị",
+      "question": "Các trường hợp phải thuê tư vấn thẩm định giá BĐS dự kiến thuê",
+      "options": {
+        "A": "Chi phí thuê BĐS trên 100 triệu đồng/tháng/hợp đồng/địa điểm",
+        "B": "Chi phí thuê BĐS trên 100 triệu đồng/tháng/hợp đồng/địa điểm hoặc các trường hợp khác theo yêu cầu của Người có thẩm quyền phê duyệt phương án thuê",
+        "C": "Theo yêu cầu của Người có thẩm quyền phê duyệt phương án thuê",
+        "D": "Chi phí thuê BĐS trên 150 triệu đồng/tháng/hợp đồng/địa điểm hoặc các trường hợp khác theo yêu cầu của Người có thẩm quyền phê duyệt phương án thuê"
+      },
+      "correctAnswer": "B",
+      "explanation": "Quyết định số 636/QĐ-BIDV ngày 28/6/2023 của HĐQT về ban hành Quy chế đầu tư mua sắm và thuê tài sản — Điều 49"
+    },
+    {
+      "id": "31",
+      "order": 31,
+      "category": "Hành chính quản trị",
+      "question": "Theo quy định Quyền sử dụng đất được Nhà nước cho thuê đất theo hình thức trả tiền thuê đất hàng năm, Bên sử dụng đất được phép",
+      "options": {
+        "A": "Chuyển nhượng quyền sử dụng đất cho tổ chức/cá nhân khác",
+        "B": "Chuyển nhượng cả quyền sử dụng đất và quyền sở hữu tài sản gắn liền với đất cho tổ chức/cá nhân khác",
+        "C": "Chỉ được chuyển nhượng quyền sở hữu tài sản trên đất tạo lập hợp pháp cho tổ chức/cá nhân khác. QSD đất được Nhà nước tiếp tục cho tổ chức/cá nhân nhận chuyển nhượng tài sản trên đất thuê với thời hạn còn lại",
+        "D": "Không được phép chuyển nhượng quyền sử dụng đất và quyền sở hữu tài sản trên đất"
+      },
+      "correctAnswer": "C",
+      "explanation": "Luật đất đai số 45/2013/QH13 ngày 29/11/2013 — Điều 175,c"
+    },
+    {
+      "id": "32",
+      "order": 32,
+      "category": "Hành chính quản trị",
+      "question": "Khi tiến hành khảo sát tìm kiếm BĐS để thuê làm trụ sở PGD của BIDV. Một BĐS có đặc điểm: đất ở của cá nhân đã được cấp Giấy chứng nhận QSD đất. Phần công trình trên đất đã được cá nhân xây dựng và được cơ quan chức năng cấp Giấy phép xây dựng nhưng chưa được chứng nhận QSH tài sản trên đất. Như vậy, theo các quy định của Nhà nước thì Cá nhân này được phép:",
+      "options": {
+        "A": "Cho BIDV thuê toàn bộ bao gồm cả phần đất và công trình trên đất",
+        "B": "Chỉ được phép cho thuê công trình trên đất",
+        "C": "Chỉ được phép cho thuê QSD đất",
+        "D": "Không được cho thuê QSD đất và công trình trên đất"
+      },
+      "correctAnswer": "C",
+      "explanation": "Luật kinh doanh bất động sản số 66/2014/QH13 ngày 25/11/2014 — Điều 9"
+    },
+    {
+      "id": "33",
+      "order": 33,
+      "category": "Hành chính quản trị",
+      "question": "Khi BIDV thực hiện ký kết Hợp đồng nhận chuyển nhượng BĐS làm trụ sở một Chi nhánh của BIDV với Bên chuyển nhượng là một Đơn vị có chức năng kinh doanh bất động sản. Theo quy định của Nhà nước thì Hợp đồng chuyển nhượng này phải",
+      "options": {
+        "A": "Thực hiện công chứng,  chứng thực Hợp đồng tại UBND phường, xã nơi có BĐS chuyển nhượng",
+        "B": "Thực hiện công chứng,  chứng thực Hợp đồng tại Văn phòng công chứng tại bất kỳ đâu trên lãnh thỗ Việt Nam",
+        "C": "Thực hiện công chứng,  chứng thực Hợp đồng tại Văn phòng công chứng tại Tỉnh/Thành phố có BĐS chuyển nhượng",
+        "D": "Do các Bên tự thỏa thuận việc công chứng, chứng thực Hợp đồng"
+      },
+      "correctAnswer": "D",
+      "explanation": "Luật kinh doanh bất động sản số 66/2014/QH13 ngày 25/11/2014. — Điều 10, 17"
+    },
+    {
+      "id": "34",
+      "order": 34,
+      "category": "Hành chính quản trị",
+      "question": "Quá trình triển khai thực hiện mua một BĐS làm trụ sở hoạt động của BIDV thường kéo dài. Do đó, khi tiến hành thuê tư vấn thẩm định giá để xác định giá trị tài sản và triển khai các bước tiếp theo, cán bộ cần chú ý đến thời hạn hiệu lực của kết quả thẩm định giá",
+      "options": {
+        "A": "Không quá 1 tháng kể từ thời điểm chứng thư thẩm định giá có hiệu lực",
+        "B": "Không quá 3 tháng kể từ thời điểm chứng thư thẩm định giá có hiệu lực",
+        "C": "Không quá 6 tháng kể từ thời điểm chứng thư thẩm định giá có hiệu lực",
+        "D": "Không quá 9 tháng kể từ thời điểm chứng thư thẩm định giá có hiệu lực"
+      },
+      "correctAnswer": "C",
+      "explanation": "Thông tư 28/2015/TT-BTC ngày 06/3/2015 của Bộ Tài chính về ban hành tiêu chuẩn thẩm định giá việt nam số 05, 06, 07. — Mục 7 Phần II Tiêu chuẩn thẩm định giá việt nam số 05 - Quy trình thẩm định giá"
+    },
+    {
+      "id": "35",
+      "order": 35,
+      "category": "Hành chính quản trị",
+      "question": "Trong năm, ĐVTV có đề xuất phương án đầu tư mua sắm BĐS làm trụ sở PGD A với TMĐT 14 tỷ đồng (Dự án này không có trong danh mục dự án đăng ký tìm kiếm trong năm đã được HĐQT phê duyệt và Mức dự phòng của Kế hoạch đến thời điểm trình chủ trương Dự án này là 45 tỷ đồng). Người có thẩm quyền phê duyệt phương án đầu tư và sử dụng vốn dự phòng triển khai Dự án này là",
+      "options": {
+        "A": "Hội đồng quản trị",
+        "B": "Tổng Giám đốc",
+        "C": "Phó Tổng Giám đốc phụ trách Ban QLTSNN",
+        "D": "Giám đốc Ban QLTSNN"
+      },
+      "correctAnswer": "B",
+      "explanation": "- Phụ lục I/PCUQTS kèm theo Quyết định số 7069/QĐ-BIDV ngày 02/10/2023 của TGĐ về phân cấp, ủy quyền trong lĩnh vực đầu tư mua sắm, thuê và quản lý sử dụng tài sản.\n- Khoản 1 Điều 3 Quyết định số 894/QĐ-BIDV ngày 22/9/2023 của HĐQT về phân cấp, ủy quyền trong lĩnh vực đầu tư mua sắm, thuê và quản lý sử dụng tài sản — - Phụ lục I/PCUQTS kèm theo Quyết định số 7069/QĐ-BIDV.\n- Khoản 1 Điều 3 Quyết định số 894/QĐ-BIDV"
+    },
+    {
+      "id": "36",
+      "order": 36,
+      "category": "Hành chính quản trị",
+      "question": "Ban quản lý dự án đầu tư xây dựng có các nghĩa vụ:",
+      "options": {
+        "A": "Thực hiện nghĩa vụ của chủ đầu tư về quản lý dự án trong phạm vi được ủy quyền",
+        "B": "Tổ chức quản lý dự án đầu tư xây dựng bảo đảm yêu cầu về tiến độ, chất lượng, chi phí, an toàn và bảo vệ môi trường trong xây dựng",
+        "C": "Báo cáo công việc với chủ đầu tư trong quá trình quản lý dự án",
+        "D": "Cả 3 phương án a, b và c"
+      },
+      "correctAnswer": "D",
+      "explanation": "Luật Xây dựng số 50/2014/QH13 — Điểm a, b, c - Khoản 2 - Điều 69."
+    },
+    {
+      "id": "37",
+      "order": 37,
+      "category": "Hành chính quản trị",
+      "question": "Công tác nào không nằm trong hoạt động tư vấn đầu tư xây dựng",
+      "options": {
+        "A": "Công tác tư vấn bảo hiểm công trình",
+        "B": "Công tác tư vấn lập dự án đầu tư xây dựng công trình",
+        "C": "Công tác tư vấn khảo sát, thiết kế xây dựng công trình",
+        "D": "Công tác tư vấn giám sát thi công xây dựng công trình"
+      },
+      "correctAnswer": "A",
+      "explanation": "Luật Xây dựng số 50/2014/QH13 — Khoản 24 - Điều 3"
+    },
+    {
+      "id": "38",
+      "order": 38,
+      "category": "Hành chính quản trị",
+      "question": "Hoạt động thi công xây dựng công trình bao gồm:",
+      "options": {
+        "A": "Công tác xây dựng và lắp đặt thiết bị đối với công trình xây dựng mới, sửa chữa, cải tạo",
+        "B": "Công tác phá dỡ công trình",
+        "C": "Công tác bảo trì công trình xây dựng.",
+        "D": "Cả 3 phương án a, b và c"
+      },
+      "correctAnswer": "D",
+      "explanation": "Luật Xây dựng số 50/2014/QH13 — Khoản 38 - Điều 3."
+    },
+    {
+      "id": "39",
+      "order": 39,
+      "category": "Hành chính quản trị",
+      "question": "Chỉ giới xây dựng",
+      "options": {
+        "A": "là chỉ tiêu để quản lý phát triển không gian, kiến trúc được xác định cụ thể cho một khu vực hay một lô đất bao gồm mật độ xây dựng, hệ số sử dụng đất, chiều cao xây dựng tối đa, tối thiểu của công trình",
+        "B": "là đường giới hạn cho phép xây dựng công trình chính trên thửa đất",
+        "C": "Cả phương án a và b",
+        "D": "là đường ranh giới được xác định trên bản đồ quy hoạch và thực địa để phân định ranh giới giữa phần đất được xây dựng công trình và phần đất được dành cho đường giao thông hoặc công trình hạ tầng kỹ thuật, không gian công cộng khá"
+      },
+      "correctAnswer": "B",
+      "explanation": "Luật Xây dựng số 50/2014/QH13 — Mục 7 Điều 3"
+    },
+    {
+      "id": "40",
+      "order": 40,
+      "category": "Hành chính quản trị",
+      "question": "Thiết kế xây dựng công trình không bao gồm các hình thức:",
+      "options": {
+        "A": "Thiết kế cơ sở",
+        "B": "Thiết kế chi tiết",
+        "C": "Thiết kế kỹ thuật",
+        "D": "Thiết kế bản vẽ thi công"
+      },
+      "correctAnswer": "B",
+      "explanation": "Luật số 60/2020/QH14 sửa đổi bổ sung một số điều của Luật xây dựng — Khoản 23 - Điều1."
+    },
+    {
+      "id": "41",
+      "order": 41,
+      "category": "Hành chính quản trị",
+      "question": "Hợp đồng trọn gói áp dụng đối với gói thầu nào",
+      "options": {
+        "A": "Hợp đồng mà tại thời điểm lựa chọn nhà thầu, phạm vi công việc, yêu cầu kỹ thuật, thời gian thực hiện gói thầu được xác định rõ, ít có khả năng thay đổi về khối lượng, yêu cầu kỹ thuật, các điều kiện không lường trước được;",
+        "B": "Hợp đồng mà tại thời điểm lựa chọn nhà thầu, phạm vi công việc, yêu cầu kỹ thuật, thời gian thực hiện gói thầu chưa thể xác định được rõ khối lượng, đơn giá nhưng các bên tham gia hợp đồng xác định được khả năng quản lý rủi ro, quản lý thay đổi phát sinh hoặc xác định được các tính chất, đặc điểm của sản phẩm đầu ra",
+        "C": "Hợp đồng mà tại thời điểm lựa chọn nhà thầu, phạm vi công việc, yêu cầu kỹ thuật, thời gian thực hiện gói thầu được xác định rõ, ít có khả năng thay đổi về khối lượng, yêu cầu kỹ thuật",
+        "D": "Hợp đồng mà tại thời điểm lựa chọn nhà thầu, phạm vi công việc, yêu cầu kỹ thuật, thời gian thực hiện gói thầu được xác định rõ, ít có khả năng thay đổi về khối lượng, yêu cầu kỹ thuật, các điều kiện không lường trước được; gói thầu chưa thể xác định được rõ khối lượng, đơn giá nhưng các bên tham gia hợp đồng xác định được khả năng quản lý rủi ro, quản lý thay đổi phát sinh hoặc xác định được các tính chất, đặc điểm của sản phẩm đầu ra"
+      },
+      "correctAnswer": "D",
+      "explanation": "Luật Đấu thầu số 22/2023/QH15 — Điểm a Khoản 1 Điều 64"
+    },
+    {
+      "id": "42",
+      "order": 42,
+      "category": "Hành chính quản trị",
+      "question": "Nhà thầu tham dự thầu phải độc lập về pháp lý và độc lập về tài chính với các bên:",
+      "options": {
+        "A": "Chủ đầu tư, bên mời thầu, trừ trường hợp nhà thầu là đơn vị sự nghiệp công lập thuộc cơ quan quản lý nhà nước có chức năng, nhiệm vụ được giao phù hợp với tính chất gói thầu của cơ quan quản lý nhà nước đó hoặc là công ty thành viên, công ty con của tập đoàn, tổng công ty nhà nước có ngành, nghề sản xuất, kinh doanh chính phù hợp với tính chất gói thầu của tập đoàn, tổng công ty nhà nước đó",
+        "B": "Các nhà thầu tư vấn quản lý dự án, tư vấn giám sát; nhà thầu tư vấn lập, thẩm tra, thẩm định hồ sơ thiết kế, dự toán; nhà thầu tư vấn lập, thẩm định nhiệm vụ khảo sát, thiết kế; nhà thầu tư vấn lập, thẩm định hồ sơ mời thầu, hồ sơ yêu cầu; nhà thầu tư vấn đánh giá hồ sơ dự thầu, hồ sơ đề xuất; nhà thầu tư vấn thẩm định kết quả lựa chọn nhà thầu gói thầu đó",
+        "C": "Các nhà thầu khác cùng tham dự thầu trong một gói thầu đối với đấu thầu hạn chế",
+        "D": "Cả 3 phương án a, b và c"
+      },
+      "correctAnswer": "D",
+      "explanation": "Luật Đấu thầu số 22/2023/QH15 — Khoản 2 - Điều 6"
+    },
+    {
+      "id": "43",
+      "order": 43,
+      "category": "Hành chính quản trị",
+      "question": "Bảo đảm dự thầu không được hoàn trả trong các trường hợp sau đây:",
+      "options": {
+        "A": "Sau thời điểm đóng thầu và trong thời gian có hiệu lực của hồ sơ dự thầu, nhà thầu rút hồ sơ dự thầu hoặc có văn bản từ chối thực hiện một hoặc các công việc đã đề xuất trong hồ sơ dự thầu theo yêu cầu của hồ sơ mời thầu",
+        "B": "Nhà thầu có hành vi vi phạm quy định tại Điều 16 của Luật Đấu thầu hoặc vi phạm pháp luật về đấu thầu dẫn đến phải hủy thầu theo quy định tại điểm d và điểm đ khoản 1, điểm d và điểm đ khoản 2 Điều 17 của Luật Đấu thầu",
+        "C": "Nhà thầu không thực hiện biện pháp bảo đảm thực hiện hợp đồng theo quy định tại Điều 68 và Điều 75 của Luật Đấu thầu",
+        "D": "Cả 3 phương án a, b và c"
+      },
+      "correctAnswer": "D",
+      "explanation": "Luật Đấu thầu số 22/2023/QH15 — Khoản 9 - Điều 14"
+    },
+    {
+      "id": "44",
+      "order": 44,
+      "category": "Hành chính quản trị",
+      "question": "Dự án đầu tư xây dựng công trình chỉ yêu cầu lập Báo cáo kinh tế - kỹ thuật đầu tư xây dựng có TMĐT:",
+      "options": {
+        "A": "Dưới 45 tỷ đồng",
+        "B": "Dưới 30 tỷ đồng",
+        "C": "Dưới 15 tỷ đồng",
+        "D": "Dưới 10 tỷ đồng"
+      },
+      "correctAnswer": "C",
+      "explanation": "Nghị định 15/2021/NĐ-CP — Khoản 3 – Điều 5"
+    },
+    {
+      "id": "45",
+      "order": 45,
+      "category": "Hành chính quản trị",
+      "question": "Nội dung quản lý dự án đầu tư xây dựng công trình bao gồm:",
+      "options": {
+        "A": "Quản lý chất lượng, khối lượng, tiến độ",
+        "B": "An toàn lao động",
+        "C": "Môi trường xây dựng",
+        "D": "Cả 3 phương án a, b và c"
+      },
+      "correctAnswer": "D",
+      "explanation": "Luật Xây dựng số 50/2014/QH13 — Khoản 1- Điều 66."
+    },
+    {
+      "id": "46",
+      "order": 46,
+      "category": "Hành chính quản trị",
+      "question": "Hạn mức gói thầu phi tư vấn, hàng hóa, xây lắp, hỗn hợp được áp dụng quy trình chỉ định thầu có giá trị gói thầu:",
+      "options": {
+        "A": "Không quá 03 tỷ đồng",
+        "B": "Không quá 01 tỷ đồng",
+        "C": "Không quá 05 tỷ đồng",
+        "D": "Không quá 500 triệu đồng"
+      },
+      "correctAnswer": "B",
+      "explanation": "Luật Đấu thầu số 22/2023/QH15 — Điểm m Khoản 1 Điều 23"
+    },
+    {
+      "id": "47",
+      "order": 47,
+      "category": "Hành chính quản trị",
+      "question": "Trách nhiệm đăng tải thông báo mời thầu lên hệ thống mạng đấu thầu quốc gia thuộc về bên nào?",
+      "options": {
+        "A": "Chủ đầu tư",
+        "B": "Bên mời thầu",
+        "C": "Cả phương án a và b"
+      },
+      "correctAnswer": "B",
+      "explanation": "Luật Đấu thầu số 22/2023/QH15 — Điểm b Khoản 1 Điều 8"
+    },
+    {
+      "id": "48",
+      "order": 48,
+      "category": "Hành chính quản trị",
+      "question": "Bảo đảm dự thầu được áp dụng trong các trường hợp nào",
+      "options": {
+        "A": "Đấu thầu rộng rãi, đấu thầu hạn chế, chỉ định thầu",
+        "B": "Đấu thầu rộng rãi, đấu thầu hạn chế, chỉ định thầu, chào hàng cạnh tranh",
+        "C": "Đấu thầu rộng rãi, chỉ định thầu, chào hàng cạnh tranh",
+        "D": "Đấu thầu rộng rãi, đấu thầu hạn chế, chào hàng cạnh tranh đối với gói thầu cung cấp dịch vụ phi tư vấn, mua sắm hàng hóa, xây lắp và gói thầu hỗn hợp"
+      },
+      "correctAnswer": "D",
+      "explanation": "Luật Đấu thầu số 22/2023/QH15 — Điểm a Khoản 2 Điều 14"
+    },
+    {
+      "id": "49",
+      "order": 49,
+      "category": "Hành chính quản trị",
+      "question": "Giá bán hồ sơ yêu cầu, hồ sơ mời thầu đối với đấu thầu qua mạng trong nước",
+      "options": {
+        "A": "2.000.000 đồng đối với hồ sơ mời thầu, 1.000.000 đồng đối với hồ sơ yêu cầu",
+        "B": "5.000.000 đồng đối với hồ sơ mời thầu, 3.000.000 đồng đối với hồ sơ yêu cầu",
+        "C": "1.000.000 đồng",
+        "D": "Miễn phí"
+      },
+      "correctAnswer": "D",
+      "explanation": "Luật Đấu thầu số 22/2023/QH15 — Điểm a Khoản 1 Điều 15"
+    },
+    {
+      "id": "50",
+      "order": 50,
+      "category": "Hành chính quản trị",
+      "question": "Trong cùng 01  dự án đầu tư XDCT, nhà thầu nào không được tham dự gói thầu xây lắp:",
+      "options": {
+        "A": "Nhà thầu tư vấn lập, thẩm tra, thẩm định dự toán, thiết kế kỹ thuật, thiết kế bản vẽ thi công",
+        "B": "Nhà thầu tư vấn lập, thẩm định hồ sơ mời sơ tuyển, hồ sơ mời thầu; đánh giá hồ sơ dự sơ tuyển, hồ sơ dự thầu; kiểm định hàng hóa; thẩm định kết quả lựa chọn nhà thầu; giám sát thực hiện hợp đồng",
+        "C": "Cả 2 phương án a và b",
+        "D": "Không quy định"
+      },
+      "correctAnswer": "C",
+      "explanation": "Luật Đấu thầu số 22/2023/QH15 — Điểm đ Khoản 6 Điều 16"
+    }
+  ],
+  "flashcardSets": []
+}

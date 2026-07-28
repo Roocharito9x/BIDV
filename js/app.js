@@ -9,9 +9,11 @@ import {
 import { parseExamWorkbook } from "./excel-importer.js";
 
 const PASSWORD_HASH = "bcfa55507a4eaf90c1c3c3c058292d74215363e33bda56d655f3f14bd455433b";
-const DEFAULT_EXAM_URL = "./data/bidv-digital-transformation-2026.json";
+const SYSTEM_EXAM_URLS = [
+  "./data/bidv-digital-transformation-2026.json",
+  "./data/hcqt.json",
+];
 const SESSION_KEY = "bidv-training-authenticated";
-const ANSWER_KEYS = ["A", "B", "C", "D"];
 
 const state = {
   exams: [],
@@ -72,11 +74,18 @@ async function hashText(value) {
 }
 
 async function loadExams() {
-  const response = await fetch(DEFAULT_EXAM_URL);
-  if (!response.ok) throw new Error("Không tải được bộ đề mặc định.");
-  const systemExam = await response.json();
+  const systemExams = await Promise.all(
+    SYSTEM_EXAM_URLS.map(async (url) => {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(`Không tải được bộ đề hệ thống: ${url}`);
+      return response.json();
+    }),
+  );
   const userExams = await getUserExams();
-  state.exams = [systemExam, ...userExams.sort((a, b) => b.createdAt.localeCompare(a.createdAt))];
+  state.exams = [
+    ...systemExams,
+    ...userExams.sort((a, b) => b.createdAt.localeCompare(a.createdAt)),
+  ];
   $("#homeExamCount").textContent = state.exams.length;
 }
 
@@ -145,11 +154,11 @@ function renderQuestionList(filter = "") {
             </div>
           </div>
           <div class="answer-grid">
-            ${ANSWER_KEYS.map(
-              (key) => `
+            ${Object.entries(question.options).map(
+              ([key, value]) => `
                 <div class="answer-item ${question.correctAnswer === key ? "correct" : ""}">
                   <span class="answer-key">${key}.</span>
-                  <span>${escapeHtml(question.options[key])}</span>
+                  <span>${escapeHtml(value)}</span>
                 </div>
               `,
             ).join("")}
@@ -229,11 +238,11 @@ function renderPracticeQuestion() {
   $("#quizQuestionText").textContent = question.question;
   $("#quizFeedback").hidden = true;
   $("#nextQuestionButton").hidden = true;
-  $("#quizOptions").innerHTML = ANSWER_KEYS.map(
-    (key) => `
+  $("#quizOptions").innerHTML = Object.entries(question.options).map(
+    ([key, value]) => `
       <button class="quiz-option" data-answer="${key}" type="button">
         <span class="option-key">${key}</span>
-        <span>${escapeHtml(question.options[key])}</span>
+        <span>${escapeHtml(value)}</span>
       </button>
     `,
   ).join("");
