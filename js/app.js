@@ -21,6 +21,7 @@ const state = {
   currentProgress: null,
   importedExam: null,
   practice: null,
+  currentPracticeSetIndex: null,
   timerId: null,
   flashcards: [],
   flashcardIndex: 0,
@@ -120,6 +121,8 @@ async function openExam(examId) {
   if (!exam) return;
   state.currentExam = exam;
   state.currentProgress = await getProgress(exam.id);
+  state.currentPracticeSetIndex = null;
+  state.practice = null;
   $("#examTitle").textContent = exam.name;
   $("#examMeta").textContent = `${exam.questions.length} câu hỏi • ${exam.source === "system" ? "Bộ đề BIDV" : "Đề đã lưu trên thiết bị"}`;
   $("#deleteExamButton").hidden = exam.source === "system";
@@ -185,47 +188,164 @@ function selectExamTab(tabName) {
 
 function configurePractice() {
   const total = state.currentExam.questions.length;
-  const choices = [10, 20, 50, 100, total]
-    .filter((value, index, array) => value <= total && array.indexOf(value) === index);
-  $("#practiceCount").innerHTML = choices
-    .map((value) => `<option value="${value}">${value === total ? `Toàn bộ (${total})` : `${value} câu`}</option>`)
+  const choices = [10, 20, 30]
+    .filter((value) => value <= total);
+  if (!choices.length) choices.push(total);
+  $("#practiceCountOptions").innerHTML = choices
+    .map(
+      (value, index) => `
+        <button class="choice-button ${index === 0 ? "selected" : ""}" data-choice-value="${value}" type="button" aria-pressed="${index === 0}">
+          ${value} câu
+        </button>
+      `,
+    )
     .join("");
   $("#startWrongPractice").hidden = !state.currentProgress.wrongQuestionIds.length;
-  showPracticeScreen("setup");
+  const plan = state.currentProgress.practicePlan;
+  const currentIds = new Set(state.currentExam.questions.map((question) => String(question.id)));
+  const validPlan =
+    plan &&
+    plan.questionIds?.length === total &&
+    plan.questionIds.every((id) => currentIds.has(String(id)));
+  if (validPlan) {
+    renderPracticePlan();
+    showPracticeScreen("plan");
+  } else {
+    showPracticeScreen("setup");
+  }
 }
 
 function showPracticeScreen(screen) {
   $("#practiceSetup").hidden = screen !== "setup";
+  $("#practicePlan").hidden = screen !== "plan";
   $("#practiceQuestion").hidden = screen !== "question";
   $("#practiceResult").hidden = screen !== "result";
   clearInterval(state.timerId);
 }
 
-function startPractice(useWrongQuestions = false) {
-  let source = state.currentExam.questions;
-  if (useWrongQuestions) {
-    source = source.filter((question) =>
-      state.currentProgress.wrongQuestionIds.includes(String(question.id)),
-    );
+function getSelectedChoice(groupName) {
+  return $(`[data-choice-group="${groupName}"] .selected`)?.dataset.choiceValue;
+}
+
+async function createPracticePlan() {
+  const count = Number($("#practiceCountOptions .selected")?.dataset.choiceValue);
+  const order = getSelectedChoice("practiceOrder");
+  const timerSeconds = Number(getSelectedChoice("practiceTimer"));
+  const revealAnswer = getSelectedChoice("practiceReveal") === "yes";
+  const source =
+    order === "random"
+      ? shuffle(state.currentExam.questions)
+      : [...state.currentExam.questions];
+  state.currentProgress.practicePlan = {
+    count,
+    order,
+    timerSeconds,
+    revealAnswer,
+    questionIds: source.map((question) => String(question.id)),
+    completedSetIndexes: [],
+    createdAt: new Date().toISOString(),
+  };
+  await saveProgress(state.currentProgress);
+  renderPracticePlan();
+  showPracticeScreen("plan");
+}
+
+function getPracticeSets() {
+  const plan = state.currentProgress.practicePlan;
+  const questionById = new Map(
+    state.currentExam.questions.map((question) => [String(question.id), question]),
+  );
+  const orderedQuestions = plan.questionIds
+    .map((id) => questionById.get(String(id)))
+    .filter(Boolean);
+  const sets = [];
+  for (let index = 0; index < orderedQuestions.length; index += plan.count) {
+    sets.push(orderedQuestions.slice(index, index + plan.count));
   }
+  return sets;
+}
 
-  const selectedCount = Math.min(Number($("#practiceCount").value), source.length);
-  const questions =
-    $("#practiceOrder").value === "random"
-      ? shuffle(source).slice(0, selectedCount)
-      : source.slice(0, selectedCount);
+function renderPracticePlan() {
+  const plan = state.currentProgress.practicePlan;
+  const sets = getPracticeSets();
+  const completed = new Set(plan.completedSetIndexes ?? []);
+  const done = completed.size;
+  const percent = Math.round((done / sets.length) * 100);
+  $("#practicePlanTitle").textContent = `${sets.length} bộ đề luyện thi`;
+  $("#practicePlanSummary").textContent =
+    `${plan.count} câu/bộ • ${plan.order === "random" ? "Đã xáo trộn, không trùng câu" : "Theo thứ tự gốc"} • ` +
+    `${plan.timerSeconds ? `${plan.timerSeconds} giây/câu` : "Không giới hạn thời gian"}`;
+  $("#practicePlanProgressText").textContent = `Đã hoàn thành ${done} / ${sets.length} bộ`;
+  $("#practicePlanProgressPercent").textContent = `${percent}%`;
+  $("#practicePlanProgressBar").style.width = `${percent}%`;
+  $("#practiceSetGrid").innerHTML = sets
+    .map((questions, index) => {
+      const isCompleted = completed.has(index);
+      const isCurrent = state.currentPracticeSetIndex === index && !isCompleted;
+      const status = isCompleted ? "✓ Hoàn thành" : isCurrent ? "▶ Đang làm" : "Chưa làm";
+      const rangeLabel =
+        plan.order === "sequential"
+          ? `Câu ${index * plan.count + 1}–${index * plan.count + questions.length}`
+          : `${questions.length} câu hỏi`;
+      return `
+        <button class="practice-set-card ${isCompleted ? "completed" : ""} ${isCurrent ? "current" : ""}" data-practice-set="${index}" type="button">
+          <span class="set-status">${status}</span>
+          <strong>Bộ ${index + 1}</strong>
+          <span class="set-range">${rangeLabel}</span>
+        </button>
+      `;
+    })
+    .join("");
+}
 
+function startPracticeSet(setIndex) {
+  const plan = state.currentProgress.practicePlan;
+  const questions = getPracticeSets()[setIndex];
+  if (!questions?.length) return;
+  state.currentPracticeSetIndex = setIndex;
   state.practice = {
     questions,
     index: 0,
     results: [],
-    timerSeconds: Number($("#practiceTimer").value),
-    revealAnswer: $("#practiceReveal").value === "yes",
+    timerSeconds: plan.timerSeconds,
+    revealAnswer: plan.revealAnswer,
     remaining: 0,
     answered: false,
   };
   showPracticeScreen("question");
   renderPracticeQuestion();
+}
+
+function startWrongPractice() {
+  const questions = state.currentExam.questions.filter((question) =>
+    state.currentProgress.wrongQuestionIds.includes(String(question.id)),
+  );
+  if (!questions.length) return;
+  state.currentPracticeSetIndex = null;
+  state.practice = {
+    questions,
+    index: 0,
+    results: [],
+    timerSeconds: Number(getSelectedChoice("practiceTimer") ?? 15),
+    revealAnswer: getSelectedChoice("practiceReveal") !== "no",
+    remaining: 0,
+    answered: false,
+  };
+  showPracticeScreen("question");
+  renderPracticeQuestion();
+}
+
+async function resetPracticePlan() {
+  const confirmed = confirm(
+    "Reset sẽ xóa trạng thái hoàn thành của danh sách bộ đề hiện tại. Bạn muốn tiếp tục?",
+  );
+  if (!confirmed) return;
+  delete state.currentProgress.practicePlan;
+  state.currentPracticeSetIndex = null;
+  state.practice = null;
+  await saveProgress(state.currentProgress);
+  configurePractice();
+  toast("Đã reset lộ trình. Bạn có thể chọn cấu hình mới.", "success");
 }
 
 function renderPracticeQuestion() {
@@ -315,7 +435,7 @@ function nextPracticeQuestion() {
 
 function cancelPractice() {
   if (!state.practice) {
-    showPracticeScreen("setup");
+    showPracticeScreen(state.currentProgress.practicePlan ? "plan" : "setup");
     return;
   }
   const confirmed = confirm(
@@ -324,7 +444,8 @@ function cancelPractice() {
   if (!confirmed) return;
   clearInterval(state.timerId);
   state.practice = null;
-  showPracticeScreen("setup");
+  if (state.currentProgress.practicePlan) renderPracticePlan();
+  showPracticeScreen(state.currentProgress.practicePlan ? "plan" : "setup");
 }
 
 async function finishPractice() {
@@ -344,6 +465,17 @@ async function finishPractice() {
     bestScore: Math.max(state.currentProgress.bestScore, percentage),
     wrongQuestionIds: [...new Set([...priorWrong, ...wrongIds])],
   };
+  if (
+    state.currentProgress.practicePlan &&
+    Number.isInteger(state.currentPracticeSetIndex)
+  ) {
+    state.currentProgress.practicePlan.completedSetIndexes = [
+      ...new Set([
+        ...(state.currentProgress.practicePlan.completedSetIndexes ?? []),
+        state.currentPracticeSetIndex,
+      ]),
+    ].sort((a, b) => a - b);
+  }
   await saveProgress(state.currentProgress);
 
   $("#resultIcon").textContent = percentage >= 80 ? "🏆" : percentage >= 50 ? "💪" : "📚";
@@ -357,6 +489,24 @@ async function finishPractice() {
   `;
   $("#startWrongPractice").hidden = !state.currentProgress.wrongQuestionIds.length;
   showPracticeScreen("result");
+}
+
+function retryPractice() {
+  if (Number.isInteger(state.currentPracticeSetIndex)) {
+    startPracticeSet(state.currentPracticeSetIndex);
+  } else {
+    startWrongPractice();
+  }
+}
+
+function backToPracticePlan() {
+  state.practice = null;
+  if (state.currentProgress.practicePlan) {
+    renderPracticePlan();
+    showPracticeScreen("plan");
+  } else {
+    showPracticeScreen("setup");
+  }
 }
 
 function getFlashcardSets(exam) {
@@ -561,6 +711,23 @@ function bindEvents() {
     const answerButton = event.target.closest("[data-answer]");
     if (answerButton) answerQuestion(answerButton.dataset.answer);
 
+    const choiceButton = event.target.closest("[data-choice-value]");
+    if (choiceButton) {
+      const group = choiceButton.closest("[data-choice-group], #practiceCountOptions");
+      if (group) {
+        group.querySelectorAll("[data-choice-value]").forEach((button) => {
+          const selected = button === choiceButton;
+          button.classList.toggle("selected", selected);
+          button.setAttribute("aria-pressed", String(selected));
+        });
+      }
+    }
+
+    const practiceSetButton = event.target.closest("[data-practice-set]");
+    if (practiceSetButton) {
+      startPracticeSet(Number(practiceSetButton.dataset.practiceSet));
+    }
+
     const setButton = event.target.closest("[data-flashcard-set]");
     if (setButton) openFlashcardSet(Number(setButton.dataset.flashcardSet));
   });
@@ -568,12 +735,13 @@ function bindEvents() {
   $("#questionSearch").addEventListener("input", (event) =>
     renderQuestionList(event.target.value),
   );
-  $("#startPractice").addEventListener("click", () => startPractice(false));
-  $("#startWrongPractice").addEventListener("click", () => startPractice(true));
+  $("#createPracticePlan").addEventListener("click", createPracticePlan);
+  $("#startWrongPractice").addEventListener("click", startWrongPractice);
+  $("#resetPracticePlan").addEventListener("click", resetPracticePlan);
   $("#nextQuestionButton").addEventListener("click", nextPracticeQuestion);
   $("#cancelPractice").addEventListener("click", cancelPractice);
-  $("#retryPractice").addEventListener("click", () => startPractice(false));
-  $("#backToSetup").addEventListener("click", () => showPracticeScreen("setup"));
+  $("#retryPractice").addEventListener("click", retryPractice);
+  $("#backToPracticePlan").addEventListener("click", backToPracticePlan);
   $("#deleteExamButton").addEventListener("click", removeCurrentExam);
 
   const dropZone = $("#dropZone");

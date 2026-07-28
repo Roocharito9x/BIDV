@@ -285,45 +285,74 @@
           <div id="practicePanel" class="exam-panel page-narrow" hidden>
             <div id="practiceSetup" class="practice-setup">
               <div class="section-heading">
-                <p class="eyebrow">CẤU HÌNH BÀI LUYỆN</p>
-                <h2>Tạo phiên thi phù hợp với bạn</h2>
+                <p class="eyebrow">CẤU HÌNH LỘ TRÌNH</p>
+                <h2>Tạo các bộ đề luyện thi</h2>
+                <p class="muted">Chia toàn bộ ngân hàng câu hỏi thành các bộ không trùng nhau và hoàn thành lần lượt theo tiến độ.</p>
               </div>
-              <div class="setup-grid">
-                <label class="setup-card">
-                  <span>Số câu</span>
-                  <select id="practiceCount"></select>
-                </label>
-                <label class="setup-card">
-                  <span>Thứ tự</span>
-                  <select id="practiceOrder">
-                    <option value="random">Ngẫu nhiên</option>
-                    <option value="sequential">Theo thứ tự</option>
-                  </select>
-                </label>
-                <label class="setup-card">
-                  <span>Thời gian mỗi câu</span>
-                  <select id="practiceTimer">
-                    <option value="15">15 giây</option>
-                    <option value="30">30 giây</option>
-                    <option value="0">Không giới hạn</option>
-                  </select>
-                </label>
-                <label class="setup-card">
-                  <span>Hiện đáp án sau khi chọn</span>
-                  <select id="practiceReveal">
-                    <option value="yes">Có</option>
-                    <option value="no">Không</option>
-                  </select>
-                </label>
+              <div class="practice-config-card">
+                <fieldset class="config-section">
+                  <legend>Số câu trong mỗi bộ</legend>
+                  <p>Hệ thống tự tạo đủ số bộ đến khi dùng hết câu hỏi.</p>
+                  <div id="practiceCountOptions" class="choice-buttons" aria-label="Số câu trong mỗi bộ"></div>
+                </fieldset>
+                <fieldset class="config-section">
+                  <legend>Cách sắp xếp câu hỏi</legend>
+                  <div class="visual-choice-grid" data-choice-group="practiceOrder">
+                    <button class="visual-choice selected" data-choice-value="sequential" type="button" aria-pressed="true">
+                      <span class="visual-choice-icon">≡</span>
+                      <span><strong>Theo thứ tự gốc</strong><small>Phù hợp khi học tuần tự theo tài liệu</small></span>
+                    </button>
+                    <button class="visual-choice" data-choice-value="random" type="button" aria-pressed="false">
+                      <span class="visual-choice-icon">⤨</span>
+                      <span><strong>Xáo trộn một lần</strong><small>Các bộ ngẫu nhiên nhưng không trùng câu</small></span>
+                    </button>
+                  </div>
+                </fieldset>
+                <div class="config-row">
+                  <fieldset class="config-section compact">
+                    <legend>Thời gian mỗi câu</legend>
+                    <div class="choice-buttons" data-choice-group="practiceTimer">
+                      <button class="choice-button selected" data-choice-value="15" type="button" aria-pressed="true">15 giây</button>
+                      <button class="choice-button" data-choice-value="30" type="button" aria-pressed="false">30 giây</button>
+                      <button class="choice-button" data-choice-value="0" type="button" aria-pressed="false">Không giới hạn</button>
+                    </div>
+                  </fieldset>
+                  <fieldset class="config-section compact">
+                    <legend>Phản hồi đáp án</legend>
+                    <div class="choice-buttons" data-choice-group="practiceReveal">
+                      <button class="choice-button selected" data-choice-value="yes" type="button" aria-pressed="true">Hiện ngay</button>
+                      <button class="choice-button" data-choice-value="no" type="button" aria-pressed="false">Không hiện ngay</button>
+                    </div>
+                  </fieldset>
+                </div>
               </div>
               <div class="setup-actions">
-                <button id="startPractice" class="button primary large" type="button">
-                  Bắt đầu luyện thi
+                <button id="createPracticePlan" class="button primary large" type="button">
+                  Tạo danh sách bộ đề →
                 </button>
                 <button id="startWrongPractice" class="button secondary large" type="button" hidden>
                   Luyện lại câu sai
                 </button>
               </div>
+            </div>
+
+            <div id="practicePlan" class="practice-plan" hidden>
+              <div class="plan-heading">
+                <div>
+                  <p class="eyebrow">LỘ TRÌNH LUYỆN THI</p>
+                  <h2 id="practicePlanTitle">Danh sách bộ đề</h2>
+                  <p id="practicePlanSummary" class="muted"></p>
+                </div>
+                <button id="resetPracticePlan" class="button danger-soft" type="button">↻ Reset / Đổi cấu hình</button>
+              </div>
+              <div class="plan-progress-card">
+                <div class="plan-progress-copy">
+                  <strong id="practicePlanProgressText"></strong>
+                  <span id="practicePlanProgressPercent"></span>
+                </div>
+                <div class="progress-track plan-track"><span id="practicePlanProgressBar"></span></div>
+              </div>
+              <div id="practiceSetGrid" class="practice-set-grid"></div>
             </div>
 
             <div id="practiceQuestion" class="quiz-card" hidden>
@@ -354,7 +383,7 @@
               <div id="resultStats" class="result-stats"></div>
               <div class="setup-actions">
                 <button id="retryPractice" class="button primary" type="button">Làm lại</button>
-                <button id="backToSetup" class="button secondary" type="button">Cấu hình bài khác</button>
+                <button id="backToPracticePlan" class="button secondary" type="button">← Danh sách bộ đề</button>
               </div>
             </div>
           </div>

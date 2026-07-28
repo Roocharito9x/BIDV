@@ -269,10 +269,55 @@ th { background: var(--neutral-100); font-size: 12px; line-height: 16px; text-tr
 
 .section-heading { margin-bottom: 28px; }
 .section-heading h2 { margin: 4px 0; font-size: 28px; line-height: 36px; }
-.setup-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
-.setup-card { display: grid; gap: 8px; padding: 16px; border: 1px solid var(--line); border-radius: 12px; background: white; font-weight: 500; font-size: 14px; line-height: 20px; box-shadow: var(--shadow-sm); }
-.setup-card select { min-height: 44px; }
+.practice-config-card { display: grid; gap: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 16px; background: white; box-shadow: var(--shadow-sm); }
+.config-section { min-width: 0; margin: 0; padding: 20px; border: 0; border-bottom: 1px solid var(--line); }
+.config-section:last-child { border-bottom: 0; }
+.config-section legend { width: 100%; padding: 0; color: var(--neutral-900); font-size: 15px; line-height: 22px; font-weight: 700; }
+.config-section > p { margin: 3px 0 14px; color: var(--muted); font-size: 13px; line-height: 20px; }
+.config-row { display: grid; grid-template-columns: 1fr 1fr; }
+.config-row .config-section { border-bottom: 0; }
+.config-row .config-section + .config-section { border-left: 1px solid var(--line); }
+.choice-buttons { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.choice-button {
+  min-height: 42px; padding: 8px 16px; border: 1px solid var(--line); border-radius: 10px;
+  background: var(--neutral-50); color: var(--neutral-700); cursor: pointer; font-size: 14px; line-height: 20px;
+  font-weight: 500; transition: border-color .15s, background .15s, color .15s, box-shadow .15s;
+}
+.choice-button:hover { border-color: var(--brand-primary-400); color: var(--brand-primary-600); background: var(--brand-primary-25); }
+.choice-button.selected { border-color: var(--brand-primary-500); color: white; background: var(--brand-primary-500); box-shadow: 0 2px 8px rgba(0,107,104,.18); }
+.visual-choice-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 12px; }
+.visual-choice {
+  display: grid; grid-template-columns: 44px 1fr; align-items: center; gap: 12px; min-height: 84px; padding: 14px;
+  border: 1px solid var(--line); border-radius: 12px; background: var(--neutral-50); text-align: left; cursor: pointer;
+  transition: border-color .15s, background .15s, box-shadow .15s;
+}
+.visual-choice:hover { border-color: var(--brand-primary-400); background: var(--brand-primary-25); }
+.visual-choice.selected { border-color: var(--brand-primary-500); background: var(--brand-primary-25); box-shadow: inset 0 0 0 1px var(--brand-primary-500); }
+.visual-choice-icon { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 10px; color: var(--brand-primary-600); background: var(--brand-primary-50); font-size: 24px; font-weight: 700; }
+.visual-choice strong, .visual-choice small { display: block; }
+.visual-choice strong { margin-bottom: 3px; color: var(--neutral-900); font-size: 14px; line-height: 20px; }
+.visual-choice small { color: var(--muted); font-size: 12px; line-height: 18px; }
 .setup-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+.plan-heading { display: flex; justify-content: space-between; align-items: start; gap: 20px; margin-bottom: 20px; }
+.plan-heading h2 { margin: 4px 0; font-size: 28px; line-height: 36px; }
+.plan-progress-card { margin-bottom: 18px; padding: 16px 18px 2px; border: 1px solid var(--line); border-radius: 12px; background: white; box-shadow: var(--shadow-sm); }
+.plan-progress-copy { display: flex; justify-content: space-between; gap: 12px; color: var(--neutral-700); font-size: 14px; }
+.plan-progress-copy span { color: var(--brand-primary-600); font-weight: 700; }
+.plan-track { margin: 12px 0 14px; }
+.practice-set-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.practice-set-card {
+  position: relative; min-height: 138px; padding: 16px; border: 1px solid var(--line); border-radius: 12px;
+  background: white; box-shadow: var(--shadow-sm); text-align: left; cursor: pointer; transition: transform .15s, border-color .15s, box-shadow .15s;
+}
+.practice-set-card:hover { transform: translateY(-2px); border-color: var(--brand-primary-400); box-shadow: var(--shadow-m); }
+.practice-set-card.completed { border-color: var(--green-600); background: var(--green-50); }
+.practice-set-card.current { border-color: var(--brand-primary-500); box-shadow: inset 0 0 0 1px var(--brand-primary-500), var(--shadow-sm); }
+.practice-set-card strong, .practice-set-card span { display: block; }
+.practice-set-card strong { margin: 14px 0 4px; color: var(--neutral-900); font-size: 18px; line-height: 26px; }
+.practice-set-card .set-range { color: var(--muted); font-size: 12px; line-height: 18px; }
+.set-status { width: fit-content; padding: 4px 8px; border-radius: 999px; color: var(--neutral-600); background: var(--neutral-100); font-size: 11px; line-height: 16px; font-weight: 700; }
+.practice-set-card.completed .set-status { color: var(--green-700); background: white; }
+.practice-set-card.current .set-status { color: var(--brand-primary-600); background: var(--brand-primary-50); }
 .quiz-card, .result-card { width: min(760px, 100%); margin: 0 auto; padding: clamp(24px, 4vw, 32px); border: 1px solid var(--line); border-radius: 12px; background: white; box-shadow: var(--shadow-m); }
 .quiz-progress-row { display: flex; justify-content: space-between; align-items: center; gap: 15px; color: var(--muted); font-size: 13px; font-weight: 700; }
 .quiz-session-actions { display: flex; align-items: center; gap: 8px; }
@@ -340,6 +385,7 @@ th { background: var(--neutral-100); font-size: 12px; line-height: 16px; text-tr
   .guide-panel { position: static; }
   .hero { grid-template-columns: 1fr; }
   .hero-stat { width: fit-content; }
+  .practice-set-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 640px) {
@@ -353,7 +399,11 @@ th { background: var(--neutral-100); font-size: 12px; line-height: 16px; text-tr
   .choice-content strong { font-size: 19px; }
   .page-heading { display: grid; align-items: start; }
   .page-heading .button { justify-self: stretch; }
-  .exam-grid, .flashcard-grid, .setup-grid { grid-template-columns: 1fr; }
+  .exam-grid, .flashcard-grid { grid-template-columns: 1fr; }
+  .visual-choice-grid, .config-row { grid-template-columns: 1fr; }
+  .config-row .config-section + .config-section { border-top: 1px solid var(--line); border-left: 0; }
+  .plan-heading { align-items: stretch; flex-direction: column; }
+  .practice-set-grid { grid-template-columns: repeat(2, 1fr); }
   .panel { padding: 21px; }
   .exam-header { grid-template-columns: 1fr auto; padding: 24px 14px; text-align: left; }
   .exam-header > div { grid-column: 1 / -1; grid-row: 2; }
