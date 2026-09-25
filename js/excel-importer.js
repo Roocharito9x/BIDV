@@ -1,17 +1,12 @@
-const REQUIRED_COLUMNS = [
-  "STT",
-  "Câu hỏi",
-  "Phương Án A",
-  "Phương Án B",
-  "Phương Án C",
-  "Phương Án D",
-  "Đáp án đúng",
-];
+const REQUIRED_COLUMNS = ["Câu hỏi", "Đáp án đúng"];
+const OPTION_LETTERS = ["A", "B", "C", "D", "E", "F", "G", "H"];
+const MIN_OPTIONS = 2;
 
 const COLUMN_ALIASES = {
   stt: "STT",
   "số thứ tự": "STT",
   "câu hỏi": "Câu hỏi",
+  "nội dung": "Câu hỏi",
   question: "Câu hỏi",
   "phương án a": "Phương Án A",
   "đáp án a": "Phương Án A",
@@ -31,6 +26,12 @@ const COLUMN_ALIASES = {
   "phương án f": "Phương Án F",
   "đáp án f": "Phương Án F",
   f: "Phương Án F",
+  "phương án g": "Phương Án G",
+  "đáp án g": "Phương Án G",
+  g: "Phương Án G",
+  "phương án h": "Phương Án H",
+  "đáp án h": "Phương Án H",
+  h: "Phương Án H",
   "đáp án đúng": "Đáp án đúng",
   answer: "Đáp án đúng",
   "chủ đề": "Chủ đề",
@@ -52,14 +53,14 @@ function normalizeAnswer(value) {
   const match = String(value ?? "")
     .trim()
     .toUpperCase()
-    .match(/(?:PHƯƠNG\s*ÁN|ĐÁP\s*ÁN)?\s*([A-F])$/);
+    .match(/(?:PHƯƠNG\s*ÁN|ĐÁP\s*ÁN)?\s*([A-H])$/);
   return match?.[1] ?? "";
 }
 
 function makeId(name) {
   const slug = name
     .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[̀-ͯ]/g, "")
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "")
@@ -88,16 +89,18 @@ export async function parseExamWorkbook(file, examName) {
     workbook.Sheets[firstSheetName],
     { header: 1, defval: "", raw: false },
   );
+
   const headerRowIndex = rawRows.findIndex((row) =>
-    row.some((cell) => normalizeHeader(cell) === "câu hỏi"),
+    row.some((cell) => ["câu hỏi", "nội dung"].includes(normalizeHeader(cell))),
   );
   if (headerRowIndex < 0) {
-    throw new Error("Không tìm thấy hàng tiêu đề có cột “Câu hỏi”.");
+    throw new Error('Không tìm thấy hàng tiêu đề có cột "Câu hỏi" hoặc "Nội dung".');
   }
 
   const normalizedHeaders = rawRows[headerRowIndex].map(
     (header) => COLUMN_ALIASES[normalizeHeader(header)] ?? String(header).trim(),
   );
+
   const missingColumns = REQUIRED_COLUMNS.filter(
     (column) => !normalizedHeaders.includes(column),
   );
@@ -105,9 +108,20 @@ export async function parseExamWorkbook(file, examName) {
     throw new Error(`Thiếu cột bắt buộc: ${missingColumns.join(", ")}.`);
   }
 
+  const availableOptions = OPTION_LETTERS.filter(
+    (key) => normalizedHeaders.includes(`Phương Án ${key}`),
+  );
+  if (availableOptions.length < MIN_OPTIONS) {
+    throw new Error(
+      `Cần ít nhất ${MIN_OPTIONS} cột phương án (Phương Án A, Phương Án B, …). Hiện chỉ tìm thấy ${availableOptions.length}.`,
+    );
+  }
+
   const indexes = Object.fromEntries(
     normalizedHeaders.map((header, index) => [header, index]),
   );
+  const hasStt = normalizedHeaders.includes("STT");
+
   const errors = [];
   const seenOrders = new Set();
   const questions = [];
@@ -116,32 +130,32 @@ export async function parseExamWorkbook(file, examName) {
     const excelRow = headerRowIndex + offset + 2;
     if (row.every((cell) => String(cell).trim() === "")) return;
 
-    const order = String(row[indexes.STT] ?? "").trim();
+    const order = hasStt
+      ? String(row[indexes.STT] ?? "").trim()
+      : String(offset + 1);
     const questionText = String(row[indexes["Câu hỏi"]] ?? "").trim();
-    const options = {
-      A: String(row[indexes["Phương Án A"]] ?? "").trim(),
-      B: String(row[indexes["Phương Án B"]] ?? "").trim(),
-      C: String(row[indexes["Phương Án C"]] ?? "").trim(),
-      D: String(row[indexes["Phương Án D"]] ?? "").trim(),
-    };
-    for (const key of ["E", "F"]) {
-      const value = String(row[indexes[`Phương Án ${key}`]] ?? "").trim();
-      if (value) options[key] = value;
+
+    const options = {};
+    for (const key of availableOptions) {
+      options[key] = String(row[indexes[`Phương Án ${key}`]] ?? "").trim();
     }
+
     const correctAnswer = normalizeAnswer(row[indexes["Đáp án đúng"]]);
 
-    if (!order) errors.push(`Dòng ${excelRow}: thiếu STT.`);
-    else if (seenOrders.has(order)) errors.push(`Dòng ${excelRow}: STT “${order}” bị trùng.`);
-    else seenOrders.add(order);
+    if (hasStt) {
+      if (!order) errors.push(`Dòng ${excelRow}: thiếu STT.`);
+      else if (seenOrders.has(order)) errors.push(`Dòng ${excelRow}: STT "${order}" bị trùng.`);
+    }
+    if (order) seenOrders.add(order);
 
-    if (!questionText) errors.push(`Dòng ${excelRow}: thiếu Câu hỏi.`);
+    if (!questionText) errors.push(`Dòng ${excelRow}: thiếu nội dung câu hỏi.`);
     for (const [key, option] of Object.entries(options)) {
       if (!option) errors.push(`Dòng ${excelRow}: thiếu Phương án ${key}.`);
     }
     if (!correctAnswer) {
-      errors.push(`Dòng ${excelRow}: Đáp án đúng phải là một chữ cái từ A đến F.`);
+      errors.push(`Dòng ${excelRow}: Đáp án đúng phải là một chữ cái từ A đến H.`);
     } else if (!options[correctAnswer]) {
-      errors.push(`Dòng ${excelRow}: Phương án đúng ${correctAnswer} đang để trống.`);
+      errors.push(`Dòng ${excelRow}: Phương án đúng "${correctAnswer}" đang để trống.`);
     }
 
     questions.push({
