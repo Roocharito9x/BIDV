@@ -1,6 +1,7 @@
 const REQUIRED_COLUMNS = ["Câu hỏi", "Đáp án đúng"];
-const OPTION_LETTERS = ["A", "B", "C", "D", "E", "F", "G", "H"];
+const OPTION_LETTERS = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
 const MIN_OPTIONS = 2;
+const MAX_OPTIONS = 10;
 
 const COLUMN_ALIASES = {
   stt: "STT",
@@ -32,6 +33,12 @@ const COLUMN_ALIASES = {
   "phương án h": "Phương Án H",
   "đáp án h": "Phương Án H",
   h: "Phương Án H",
+  "phương án i": "Phương Án I",
+  "đáp án i": "Phương Án I",
+  i: "Phương Án I",
+  "phương án j": "Phương Án J",
+  "đáp án j": "Phương Án J",
+  j: "Phương Án J",
   "đáp án đúng": "Đáp án đúng",
   answer: "Đáp án đúng",
   "chủ đề": "Chủ đề",
@@ -53,7 +60,7 @@ function normalizeAnswer(value) {
   const match = String(value ?? "")
     .trim()
     .toUpperCase()
-    .match(/(?:PHƯƠNG\s*ÁN|ĐÁP\s*ÁN)?\s*([A-H])$/);
+    .match(/(?:PHƯƠNG\s*ÁN|ĐÁP\s*ÁN)?\s*([A-J])$/);
   return match?.[1] ?? "";
 }
 
@@ -108,6 +115,7 @@ export async function parseExamWorkbook(file, examName) {
     throw new Error(`Thiếu cột bắt buộc: ${missingColumns.join(", ")}.`);
   }
 
+  // Các cột phương án có trong header (tối đa MAX_OPTIONS)
   const availableOptions = OPTION_LETTERS.filter(
     (key) => normalizedHeaders.includes(`Phương Án ${key}`),
   );
@@ -135,10 +143,13 @@ export async function parseExamWorkbook(file, examName) {
       : String(offset + 1);
     const questionText = String(row[indexes["Câu hỏi"]] ?? "").trim();
 
+    // Chỉ lấy các phương án có giá trị trong dòng này (bỏ qua ô trống)
     const options = {};
     for (const key of availableOptions) {
-      options[key] = String(row[indexes[`Phương Án ${key}`]] ?? "").trim();
+      const val = String(row[indexes[`Phương Án ${key}`]] ?? "").trim();
+      if (val) options[key] = val;
     }
+    const rowOptionCount = Object.keys(options).length;
 
     const correctAnswer = normalizeAnswer(row[indexes["Đáp án đúng"]]);
 
@@ -149,13 +160,24 @@ export async function parseExamWorkbook(file, examName) {
     if (order) seenOrders.add(order);
 
     if (!questionText) errors.push(`Dòng ${excelRow}: thiếu nội dung câu hỏi.`);
-    for (const [key, option] of Object.entries(options)) {
-      if (!option) errors.push(`Dòng ${excelRow}: thiếu Phương án ${key}.`);
+
+    // Kiểm tra số phương án của từng câu hỏi (không bắt buộc điền hết tất cả cột)
+    if (rowOptionCount < MIN_OPTIONS) {
+      errors.push(
+        `Dòng ${excelRow}: cần ít nhất ${MIN_OPTIONS} phương án, hiện chỉ có ${rowOptionCount}.`,
+      );
+    } else if (rowOptionCount > MAX_OPTIONS) {
+      errors.push(
+        `Dòng ${excelRow}: tối đa ${MAX_OPTIONS} phương án, hiện có ${rowOptionCount}.`,
+      );
     }
+
     if (!correctAnswer) {
-      errors.push(`Dòng ${excelRow}: Đáp án đúng phải là một chữ cái từ A đến H.`);
+      errors.push(`Dòng ${excelRow}: Đáp án đúng phải là một chữ cái từ A đến J.`);
     } else if (!options[correctAnswer]) {
-      errors.push(`Dòng ${excelRow}: Phương án đúng "${correctAnswer}" đang để trống.`);
+      errors.push(
+        `Dòng ${excelRow}: Phương án đúng "${correctAnswer}" không có nội dung hoặc không tồn tại trong câu hỏi này.`,
+      );
     }
 
     questions.push({
